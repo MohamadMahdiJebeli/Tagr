@@ -49,6 +49,9 @@ class $AssetsIconsGen {
   AssetGenImage get hashtags =>
       const AssetGenImage('assets/icons/hashtags.png');
 
+  /// File path: assets/icons/heart.png
+  AssetGenImage get heart => const AssetGenImage('assets/icons/heart.png');
+
   /// File path: assets/icons/home.png
   AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
 
@@ -79,6 +82,7 @@ class $AssetsIconsGen {
         customerSupport,
         downArrow,
         hashtags,
+        heart,
         home,
         logout,
         podcast,
@@ -103,6 +107,10 @@ class $AssetsImagesGen {
   AssetGenImage get mJ21NoBg =>
       const AssetGenImage('assets/images/MJ 21 No Bg.png');
 
+  /// File path: assets/images/PodTestImg.png
+  AssetGenImage get podTestImg =>
+      const AssetGenImage('assets/images/PodTestImg.png');
+
   /// File path: assets/images/Tagr Logo No BG.png
   AssetGenImage get tagrLogoNoBG =>
       const AssetGenImage('assets/images/Tagr Logo No BG.png');
@@ -126,6 +134,7 @@ class $AssetsImagesGen {
         botStickerPng,
         botStickerSvg,
         mJ21NoBg,
+        podTestImg,
         tagrLogoNoBG,
         tagrSplashScreen,
         tagrLogo,

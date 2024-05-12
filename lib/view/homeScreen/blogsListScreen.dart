@@ -7,6 +7,7 @@ import 'package:tagr/component/colors.dart';
 import 'package:tagr/component/component.dart';
 import 'package:tagr/controller/blogListScreen_Controller.dart';
 
+// ignore: must_be_immutable
 class BlogsListScreen extends StatelessWidget {
   BlogsListScreen({super.key});
 

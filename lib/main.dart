@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:tagr/component/colors.dart';
 import 'package:tagr/view/homeScreen/blogsListScreen.dart';
+import 'package:tagr/view/homeScreen/singleScreen.dart';
 import 'package:tagr/view/splashScreen.dart';
 
 
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
           headlineLarge: TextStyle(fontFamily: "Nunito",fontSize: 15,fontWeight: FontWeight.w500,color: SoidColor.colorTags),
         ),
       ),
-      home: BlogsListScreen(),
+      home: const SingleScreen(),
     );
   }
 }

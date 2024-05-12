@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
     }
     Widget tags(){
       return SizedBox(
-      height: 50,
+      height: 50, 
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: tagList.length,
@@ -153,7 +153,7 @@ class HomeScreen extends StatelessWidget {
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: const BorderRadius.all(Radius.circular(14)),
-                            image: DecorationImage(image: NetworkImage(homeScreen_Controller.topVisitedList[index].image!),fit: BoxFit.cover),
+                            image: DecorationImage(image: imageProvider,fit: BoxFit.cover),
                           ),
                           foregroundDecoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(14)),
