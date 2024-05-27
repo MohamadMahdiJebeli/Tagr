@@ -22,7 +22,7 @@ Please complete the registration information.""";
   static const String share="https://www.google.com/search?q=Tagr&oq=Tagr&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIMCAEQABhDGIAEGIoFMgcIAhAAGIAEMgcIAxAAGIAEMg8IBBAuGAoYxwEY0QMYgAQyCQgFEAAYChiABDIJCAYQABgKGIAEMgkIBxAAGAoYgAQyCQgIEAAYChiABDIJCAkQABgKGIAE0gEIMjI3MWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8";
   static const String about=
   """
-Hi! I'm Mohamad Mahdi!
+Hi! I'm Mohamad!
 
 I am the developer and programmer of this app! :)
 
@@ -34,4 +34,5 @@ I hope you enjoy using Tagr! :)
   Developer and Programmer
   """;
   static const String notice="The API of this app belongs to TechBlog.";
+  static const String blogEmpty="You have not posted any blog yet!";
 }

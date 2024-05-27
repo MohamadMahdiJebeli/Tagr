@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tagr/component/colors.dart';
 import 'package:tagr/component/component.dart';
-import 'package:tagr/controller/blogListScreen_Controller.dart';
-import 'package:tagr/controller/single_Blog_Controller.dart';
+import 'package:tagr/controller/blogs/blogListScreen_Controller.dart';
+import 'package:tagr/controller/blogs/single_Blog_Controller.dart';
 
 // ignore: must_be_immutable
 class BlogsListScreen extends StatelessWidget {
@@ -25,7 +25,7 @@ class BlogsListScreen extends StatelessWidget {
 
     return Scaffold(
       //Appbar
-      appBar: Appbar(size, textTheme,title),
+      appBar: appbar(size, textTheme,title),
       //Body
       body: Padding(
         padding: const EdgeInsets.all(8.0),

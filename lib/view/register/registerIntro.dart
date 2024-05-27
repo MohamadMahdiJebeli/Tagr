@@ -11,7 +11,7 @@ import 'package:validators/validators.dart';
 class RegisterIntro extends StatelessWidget {
   RegisterIntro({super.key});
 
-  RegisterController registerController = Get.put(RegisterController());
+  var registerController = Get.find<RegisterController>();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class RegisterIntro extends StatelessWidget {
                     text: string.welcome,
                     style: textTheme.headline2,
                   )
-                  ),
+                ),
               ),
               SizedBox(height: size.height/3,),
               ElevatedButton(onPressed: (){

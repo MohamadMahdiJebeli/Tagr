@@ -5,16 +5,16 @@ import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tagr/component/colors.dart';
 import 'package:tagr/component/component.dart';
-import 'package:tagr/controller/blogListScreen_Controller.dart';
-import 'package:tagr/controller/single_Blog_Controller.dart';
+import 'package:tagr/controller/blogs/blogListScreen_Controller.dart';
+import 'package:tagr/controller/blogs/single_Blog_Controller.dart';
 import 'package:tagr/gen/assets.gen.dart';
-import 'package:tagr/view/homeScreen/blogsListScreen.dart';
+import 'package:tagr/view/blogs/blogsListScreen.dart';
 
 // ignore: must_be_immutable
 class SingleBlogScreen extends StatelessWidget {
   SingleBlogScreen({super.key,});
 
-  SingleBlogController singleBlogController = Get.put(SingleBlogController());
+  var singleBlogController = Get.find<SingleBlogController>();
 
   @override
   Widget build(BuildContext context) {

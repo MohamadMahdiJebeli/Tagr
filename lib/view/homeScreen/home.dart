@@ -158,8 +158,6 @@ class BttmNavigation extends StatelessWidget {
   final List<Widget> mainScreenPages;
   final Function changePage;
 
-  RegisterController registerController = Get.put(RegisterController(),permanent: false);
-
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +190,7 @@ class BttmNavigation extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(onPressed: () => changePage(0), icon: ImageIcon(Assets.icons.home.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,),
-              IconButton(onPressed: (){registerController.checkLogin();}, icon: ImageIcon(Assets.icons.add.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,),
+              IconButton(onPressed: (){Get.find<RegisterController>().checkLogin();}, icon: ImageIcon(Assets.icons.add.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,),
               IconButton(onPressed: () => changePage(1), icon: ImageIcon(Assets.icons.user.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,)
             ],
           ),

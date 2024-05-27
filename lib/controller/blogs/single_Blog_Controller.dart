@@ -4,7 +4,7 @@ import 'package:tagr/models/articleModel.dart';
 import 'package:tagr/models/blogInfoModel.dart';
 import 'package:tagr/models/tagsModel.dart';
 import 'package:tagr/services/dioService.dart';
-import 'package:tagr/view/homeScreen/singleBlogScreen.dart';
+import 'package:tagr/view/blogs/singleBlogScreen.dart';
 
 class SingleBlogController extends GetxController{
   RxBool singleBlogLoading = false.obs;

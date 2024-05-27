@@ -28,4 +28,5 @@ class GradientColor{
   static const List<Color> tagsColor=[Color.fromARGB(255, 0, 0, 0),Color.fromARGB(255, 37, 37, 37)];
   static const List<Color> posterMainHomeColor=[Color.fromARGB(0, 0, 0, 0),Color.fromARGB(124, 25, 25, 25),Color.fromARGB(186, 0, 0, 0)];
   static const List<Color> posterBGTitle = [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(183, 216, 216, 216),Color.fromARGB(3, 128, 128, 128)];
+  static const List<Color> addBottomSheet= [Color.fromARGB(255, 0, 182, 142), Color.fromARGB(255, 82, 221, 121),];
 }

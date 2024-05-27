@@ -4,14 +4,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tagr/component/component.dart';
-import 'package:tagr/controller/blogListScreen_Controller.dart';
+import 'package:tagr/controller/blogs/blogListScreen_Controller.dart';
 import 'package:tagr/controller/homeScreen_Controller.dart';
-import 'package:tagr/controller/single_Blog_Controller.dart';
+import 'package:tagr/controller/blogs/single_Blog_Controller.dart';
 import 'package:tagr/gen/assets.gen.dart';
 import 'package:tagr/models/fakeData.dart';
 import 'package:tagr/component/colors.dart';
 import 'package:tagr/component/string.dart';
-import 'package:tagr/view/homeScreen/blogsListScreen.dart';
+import 'package:tagr/view/blogs/blogsListScreen.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {

@@ -95,6 +95,10 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/Bot Sad Sticker.png
+  AssetGenImage get botSadSticker =>
+      const AssetGenImage('assets/images/Bot Sad Sticker.png');
+
   /// File path: assets/images/Bot Sticker.png
   AssetGenImage get botStickerPng =>
       const AssetGenImage('assets/images/Bot Sticker.png');
@@ -131,6 +135,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values => [
+        botSadSticker,
         botStickerPng,
         botStickerSvg,
         mJ21NoBg,

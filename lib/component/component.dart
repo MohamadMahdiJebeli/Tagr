@@ -73,9 +73,8 @@ class loading extends StatelessWidget {
 }}
 
 // ignore: non_constant_identifier_names
-AppBar Appbar(Size size, TextTheme textTheme, String title) {
+AppBar appbar(Size size, TextTheme textTheme, String title) {
     return AppBar(
-
       actions: [
         Center(child: Container(
           height: size.height,
@@ -86,7 +85,9 @@ AppBar Appbar(Size size, TextTheme textTheme, String title) {
       ],
       leading: Padding(
         padding: const EdgeInsets.all(17.0),
-        child: ImageIcon(Assets.icons.back.provider(),size: 20,),
+        child: GestureDetector(
+          onTap: Get.back,
+          child: ImageIcon(Assets.icons.back.provider(),size: 20,)),
       ),
     );
   }
