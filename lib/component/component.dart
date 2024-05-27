@@ -37,27 +37,31 @@ class MainTags extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 20,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(24)),
-    
-        gradient: LinearGradient(colors: GradientColor.tagsColor,begin: Alignment.centerRight,end: Alignment.centerLeft),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
-        child: Row(
-          children: [
-            ImageIcon(Assets.icons.hashtags.provider(),color: Colors.white,size: 14,),
-            const SizedBox(width: 6,),
-            Text(Get.find<HomeScreen_Controller>().tagList[index].title!,style: textTheme.bodyText1,),
-          ],
+    return Obx(() =>
+      Container(
+        height: 20,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(24)),
+      
+          gradient: LinearGradient(colors: GradientColor.tagsColor,begin: Alignment.centerRight,end: Alignment.centerLeft),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
+          child: Row(
+            children: [
+              ImageIcon(Assets.icons.hashtags.provider(),color: Colors.white,size: 14,),
+              const SizedBox(width: 6,),
+              // ignore: deprecated_member_use
+              Text(Get.find<HomeScreen_Controller>().tagList[index].title!,style: textTheme.bodyText1,),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
+// ignore: camel_case_types
 class loading extends StatelessWidget {
   const loading({super.key});
   @override
@@ -68,6 +72,7 @@ class loading extends StatelessWidget {
             );
 }}
 
+// ignore: non_constant_identifier_names
 AppBar Appbar(Size size, TextTheme textTheme, String title) {
     return AppBar(
 
@@ -76,6 +81,7 @@ AppBar Appbar(Size size, TextTheme textTheme, String title) {
           height: size.height,
           width: size.width,
           alignment: Alignment.center,
+          // ignore: deprecated_member_use
           child: Text(title,style: textTheme.headline5,))),
       ],
       leading: Padding(

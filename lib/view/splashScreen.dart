@@ -2,13 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:tagr/component/colors.dart';
+import 'package:tagr/controller/registerController.dart';
 import 'package:tagr/gen/assets.gen.dart';
 import 'package:tagr/view/homeScreen/home.dart';
 
 // ignore: camel_case_types
 class Splash_Screen extends StatefulWidget{
-  const Splash_Screen({super.key});
+  Splash_Screen({super.key});
 
   @override
   State<Splash_Screen> createState() => _Splash_ScreenState();
@@ -17,10 +21,12 @@ class Splash_Screen extends StatefulWidget{
 // ignore: camel_case_types
 class _Splash_ScreenState extends State<Splash_Screen> {
 
+  RegisterController registerController = Get.put(RegisterController(),permanent: false);
+
   @override
   void initState(){
     Future.delayed(const Duration(seconds: 3),).then((value) => 
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> Home()))
+    registerController.firstOpen()
     );
     super.initState();
   }

@@ -6,6 +6,7 @@ import 'package:tagr/models/posterModel.dart';
 import 'package:tagr/models/tagsModel.dart';
 import 'package:tagr/services/dioService.dart';
 
+// ignore: camel_case_types
 class HomeScreen_Controller extends GetxController{
   Rx<PosterModel> posterModel = PosterModel().obs;
   RxList<TagsModel> tagList = RxList();

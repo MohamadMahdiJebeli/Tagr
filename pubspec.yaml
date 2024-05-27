@@ -42,6 +42,8 @@ dependencies:
   dio: ^5.4.3+1
   cached_network_image: ^3.3.1
   flutter_widget_from_html: ^0.15.0
+  get_storage: ^2.1.1
+
 
 
 
@@ -249,10 +251,12 @@ flutter:
         - asset: assets\fonts\NUNITO-MEDIUM.TTF
           weight: 500  
           # style: italic
-    #- family: Yekan Boom
-      #fonts:
-        #- asset: assets\fonts\YEKAN BOOM.TTF
-         # weight: 500
+    - family: dana
+      fonts:
+        - asset: assets/fonts/DANA-BOLD.ttf
+          weight: 700
+        - asset: assets/fonts/DANA-REGULAR.ttf
+          weight: 300
     #     - asset: assets\fonts\QS_IRANYEKAN LIGHT.TFF
     #       weight: 300
     #     - asset: assets\fonts\QS_IRANYEKAN MEDIUM.TFF

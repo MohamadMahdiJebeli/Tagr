@@ -2,16 +2,16 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tagr/component/component.dart';
+import 'package:tagr/controller/blogListScreen_Controller.dart';
 import 'package:tagr/controller/homeScreen_Controller.dart';
+import 'package:tagr/controller/single_Blog_Controller.dart';
 import 'package:tagr/gen/assets.gen.dart';
 import 'package:tagr/models/fakeData.dart';
 import 'package:tagr/component/colors.dart';
 import 'package:tagr/component/string.dart';
+import 'package:tagr/view/homeScreen/blogsListScreen.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
@@ -22,7 +22,10 @@ class HomeScreen extends StatelessWidget {
     required this.spaceWidth,
   });
   
+  // ignore: non_constant_identifier_names
   HomeScreen_Controller homeScreen_Controller = Get.put(HomeScreen_Controller());
+  SingleBlogController singleBlogController = Get.put(SingleBlogController());
+  BlogListController blogListController = Get.put(BlogListController());
 
   final Size size;
   final TextTheme textTheme;
@@ -30,43 +33,50 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  
     Widget poster(){
       return
-        Stack(
-        children: [
-          Container(
-            width: size.width/1.25,
-            height: size.height/4.2,
-            // ignore: sort_child_properties_last
-            child : CachedNetworkImage(
-            imageUrl:homeScreen_Controller.posterModel.value.image!,
-            imageBuilder: (context, imageProvider) =>
+        GestureDetector(
+          onTap: () {
+            singleBlogController.getBlogInfo(homeScreen_Controller.posterModel.value.id);   
+
+          },
+          child: Stack(
+          children: [
             Container(
-              decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(16)),
-              image: DecorationImage(
-                image: imageProvider,fit: BoxFit.cover
-                )
-            ),),
-            placeholder:(context, url) => loading(),
-            errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50),
-            ),
-            foregroundDecoration: const BoxDecoration(
-              borderRadius:  BorderRadius.all(Radius.circular(16)),
-              gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: GradientColor.posterMainHomeColor)
-            ),
-            ),
-          Positioned(
-            bottom: 8,
-            right: 8,
-            left: 8,
-            child: Column(
-              children: [
-                Text(homeScreen_Controller.posterModel.value.title!,style:textTheme.headline1,overflow: TextOverflow.ellipsis,maxLines: 2,)
-              ],
-            ),
-          )
-        ],
+              width: size.width/1.15  ,
+              height: size.height/4.2,
+              // ignore: sort_child_properties_last
+              child : CachedNetworkImage(
+              imageUrl:homeScreen_Controller.posterModel.value.image!,
+              imageBuilder: (context, imageProvider) =>
+              Container(
+                decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(16)),
+                image: DecorationImage(
+                  image: imageProvider,fit: BoxFit.cover
+                  )
+              ),),
+              placeholder:(context, url) => const loading(),
+              errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50),
+              ),
+              foregroundDecoration: const BoxDecoration(
+                borderRadius:  BorderRadius.all(Radius.circular(16)),
+                gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: GradientColor.posterMainHomeColor)
+              ),
+              ),
+            Positioned(
+              bottom: 8,
+              right: 8,
+              left: 8,
+              child: Column(
+                children: [
+                  Text(homeScreen_Controller.posterModel.value.title!,style:textTheme.headline1,overflow: TextOverflow.ellipsis,maxLines: 2,)
+                ],
+              ),
+            )
+          ],
+          ),
         );
     }
     Widget tags(){
@@ -76,9 +86,18 @@ class HomeScreen extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: tagList.length,
         itemBuilder: (context, index) {
-        return Padding(
-          padding: EdgeInsets.fromLTRB(index==0?spaceWidth:8, 8, 8, 8),
-          child: MainTags(textTheme: textTheme,index: index,),
+        return GestureDetector(
+          onTap: () async {
+            var homeTags = homeScreen_Controller.tagList[index].id!;
+            await blogListController.getBlogListTags(homeTags);
+
+            var homeTagName = homeScreen_Controller.tagList[index].title!;
+            Get.to(BlogsListScreen(title: homeTagName));
+          },
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(index==0?spaceWidth:8, 8, 8, 8),
+            child: MainTags(textTheme: textTheme,index: index,),
+          ),
         );
       },),
     );
@@ -137,61 +156,66 @@ class HomeScreen extends StatelessWidget {
           itemCount: homeScreen_Controller.topVisitedList.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return  Padding(
-              padding: EdgeInsets.fromLTRB(index==0?spaceWidth:8, 8, 8, 8),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: size.height/5.2,
-                    width: size.width/2.5,
-            
-                    child: CachedNetworkImage(
-                      imageUrl: homeScreen_Controller.topVisitedList[index].image!,
-                      imageBuilder: (context, imageProvider) => 
-                      Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(Radius.circular(14)),
-                            image: DecorationImage(image: imageProvider,fit: BoxFit.cover),
+            return  GestureDetector(
+              onTap: () {
+                singleBlogController.getBlogInfo(homeScreen_Controller.topVisitedList[index].id);   
+              },
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(index==0?spaceWidth:8, 8, 8, 8),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: size.height/5.2,
+                      width: size.width/2.5,
+              
+                      child: CachedNetworkImage(
+                        imageUrl: homeScreen_Controller.topVisitedList[index].image!,
+                        imageBuilder: (context, imageProvider) => 
+                        Stack(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: const BorderRadius.all(Radius.circular(14)),
+                              image: DecorationImage(image: imageProvider,fit: BoxFit.cover),
+                            ),
+                            foregroundDecoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(14)),
+                              gradient: LinearGradient(
+                                begin: AlignmentDirectional.topCenter,
+                                end: AlignmentDirectional.bottomCenter,
+                                colors: GradientColor.posterMainHomeColor) 
+                            ),
                           ),
-                          foregroundDecoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(14)),
-                            gradient: LinearGradient(
-                              begin: AlignmentDirectional.topCenter,
-                              end: AlignmentDirectional.bottomCenter,
-                              colors: GradientColor.posterMainHomeColor) 
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 8,
-                          left: 8,
-                          right: 8,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(homeScreen_Controller.topVisitedList[index].author!,style: textTheme.subtitle1,overflow: TextOverflow.ellipsis,),
-                              Row(
-                                children: [
-                                  const Icon(Icons.remove_red_eye,color: SoidColor.colorSubjectOnPage,size: 17,),
-                                  const SizedBox(width: 2,),
-                                  Text(homeScreen_Controller.topVisitedList[index].view!,style: textTheme.subtitle1,overflow: TextOverflow.ellipsis,),
-                                ],
-                              )
-                            ],
-                          ),
-                        )
-                      ],
+                          Positioned(
+                            bottom: 8,
+                            left: 8,
+                            right: 8,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(homeScreen_Controller.topVisitedList[index].author!,style: textTheme.subtitle1,overflow: TextOverflow.ellipsis,),
+                                Row(
+                                  children: [
+                                    const Icon(Icons.remove_red_eye,color: SoidColor.colorSubjectOnPage,size: 17,),
+                                    const SizedBox(width: 2,),
+                                    Text(homeScreen_Controller.topVisitedList[index].view!,style: textTheme.subtitle1,overflow: TextOverflow.ellipsis,),
+                                  ],
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                      placeholder: (context, url) => const loading(),
+                      errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50)
+                      )
                     ),
-                    placeholder: (context, url) => loading(),
-                    errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50)
-                    )
-                  ),
-                  const SizedBox(height: 6,),
-                  SizedBox(
-                    width: size.width/2.5,
-                    child: Text(homeScreen_Controller.topVisitedList[index].title!,overflow: TextOverflow.ellipsis,maxLines: 2,style: textTheme.headline3,))
-                ],
+                    const SizedBox(height: 6,),
+                    SizedBox(
+                      width: size.width/2.5,
+                      child: Text(homeScreen_Controller.topVisitedList[index].title!,overflow: TextOverflow.ellipsis,maxLines: 2,style: textTheme.headline3,))
+                  ],
+                ),
               ),
             );
           },
@@ -264,14 +288,19 @@ class HomeBlogsHottest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: spaceWidth,bottom: 9),
-      child: Row(
-        children: [
-          ImageIcon(Assets.icons.blogs.provider(),color: SoidColor.colorSubject,size: 25),
-          const SizedBox(width: 8,),
-          Text(string.showHottestBlog,style: textTheme.headline2,)
-        ],
+    return GestureDetector(
+      onTap: () {
+        Get.to(BlogsListScreen(title: "Hottest Blogs"));
+      },
+      child: Padding(
+        padding: EdgeInsets.only(left: spaceWidth,bottom: 9),
+        child: Row(
+          children: [
+            ImageIcon(Assets.icons.blogs.provider(),color: SoidColor.colorSubject,size: 25),
+            const SizedBox(width: 8,),
+            Text(string.showHottestBlog,style: textTheme.headline2,)
+          ],
+        ),
       ),
     );
   }

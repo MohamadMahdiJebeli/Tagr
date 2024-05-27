@@ -1,13 +1,17 @@
 // ignore_for_file: file_names, deprecated_member_use
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tagr/component/colors.dart';
+import 'package:tagr/controller/registerController.dart';
 import 'package:tagr/gen/assets.gen.dart';
-import 'package:tagr/view/userInfo.dart';
 import 'package:tagr/component/string.dart';
 import 'package:validators/validators.dart';
 
+// ignore: must_be_immutable
 class RegisterIntro extends StatelessWidget {
-  const RegisterIntro({super.key});
+  RegisterIntro({super.key});
+
+  RegisterController registerController = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +82,7 @@ class RegisterIntro extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(24.0),
                               child: TextField(
+                                controller: registerController.emailTextEditingController,
                                 onChanged: (value) {
                                   // ignore: avoid_print, prefer_interpolation_to_compose_strings
                                   print(value+" is email "+isEmail(value).toString());
@@ -92,6 +97,7 @@ class RegisterIntro extends StatelessWidget {
                             ),
                             ElevatedButton(
                             onPressed: () {
+                              registerController.register();
                               Navigator.pop(context);
                               verifyBttmSheet(context, size, textTheme);
                             },
@@ -129,6 +135,7 @@ class RegisterIntro extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(24.0),
                               child: TextField(
+                                controller: registerController.verifyTextEditingController,
                                 onChanged: (value) {
                                 },
                                 style: textTheme.headline5,
@@ -141,7 +148,7 @@ class RegisterIntro extends StatelessWidget {
                             ),
                             ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const UserInfo(),));
+                              registerController.verify();
                             },
                             style: Theme.of(context).elevatedButtonTheme.style,
                             child: const Text("Next"),

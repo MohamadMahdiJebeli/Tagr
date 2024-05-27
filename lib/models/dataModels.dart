@@ -6,7 +6,7 @@ class Hashtag{
   Hashtag({required this.title});
 }
 
-class BlogModel {
+class BlogModelfake {
   int id;
   String imageUrl;
   String title;
@@ -16,7 +16,7 @@ class BlogModel {
   String content;
   String views;
 
-  BlogModel({
+  BlogModelfake({
     required this.id,
     required this.imageUrl,
     required this.title,

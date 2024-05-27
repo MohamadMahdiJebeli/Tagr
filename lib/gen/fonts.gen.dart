@@ -12,4 +12,7 @@ class FontFamily {
 
   /// Font family: Nunito
   static const String nunito = 'Nunito';
+
+  /// Font family: dana
+  static const String dana = 'dana';
 }

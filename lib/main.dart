@@ -1,24 +1,38 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:io';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:tagr/component/colors.dart';
-import 'package:tagr/view/homeScreen/blogsListScreen.dart';
-import 'package:tagr/view/homeScreen/singleScreen.dart';
+import 'package:tagr/controller/registerController.dart';
+import 'package:tagr/my_http_overrides.dart';
 import 'package:tagr/view/splashScreen.dart';
 
 
 
-void main() {
+Future<void> main() async {
+
+  HttpOverrides.global=MyHttpOverrides();
+  await GetStorage.init();
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   const MyApp({Key? key}) : super(key: key);
-
+  const MyApp({Key? key}) : super(key: key);
+    
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      locale: const Locale('en','fa'),
+
       //Themes
       theme: ThemeData(
         inputDecorationTheme: InputDecorationTheme(
@@ -39,20 +53,20 @@ class MyApp extends StatelessWidget {
           )
         ),
         //Font Theme
-        textTheme: const TextTheme(
-          headline1: TextStyle(fontFamily: "Nunito", fontSize: 20,fontWeight: FontWeight.w700,color: SoidColor.colorTitleText),
-          headline2: TextStyle(fontFamily: "Nunito", fontSize: 20,fontWeight: FontWeight.w700,color: SoidColor.colorSubject),
-          headline3: TextStyle(fontFamily: "Nunito", fontSize: 18 ,fontWeight: FontWeight.w500,color: SoidColor.colorTitle),
-          subtitle1: TextStyle(fontFamily: "Nunito", fontWeight: FontWeight.w300,color: SoidColor.colorSubjectOnPage),
-          bodyText1: TextStyle(fontFamily: "Nunito",fontSize: 14, fontWeight: FontWeight.w500,color: SoidColor.colorTitleText),
-          bodyText2: TextStyle(fontFamily: "Nunito",fontSize: 16, fontWeight: FontWeight.w600,color: SoidColor.colorTitle),
-          headline4: TextStyle(fontFamily: "Nunito",fontSize: 30, fontWeight: FontWeight.bold,color: SoidColor.colorTitle),
-          headline5: TextStyle(fontFamily: "Nunito",fontSize: 17, fontWeight: FontWeight.w600,color: Color.fromARGB(255, 0, 0, 0)),
-          headline6: TextStyle(fontFamily: "Nunito",fontSize: 17, fontWeight: FontWeight.w500,color: SoidColor.colorDivider),
-          headlineLarge: TextStyle(fontFamily: "Nunito",fontSize: 15,fontWeight: FontWeight.w500,color: SoidColor.colorTags),
+        textTheme: TextTheme(
+          headline1: TextStyle(fontFamily: window.locale.languageCode == 'fa' ? "Nunito":'dana', fontSize: 20,fontWeight: FontWeight.w700,color: SoidColor.colorTitleText),
+          headline2: TextStyle(fontFamily: window.locale.languageCode == 'fa' ? "Nunito":'dana', fontSize: 20,fontWeight: FontWeight.w700,color: SoidColor.colorSubject),
+          headline3: TextStyle(fontFamily: window.locale.languageCode == 'fa' ? "Nunito":'dana', fontSize: 18 ,fontWeight: FontWeight.w500,color: SoidColor.colorTitle),
+          subtitle1: TextStyle(fontFamily: window.locale.languageCode == 'fa' ? "Nunito":'dana', fontWeight: FontWeight.w300,color: SoidColor.colorSubjectOnPage),
+          bodyText1: TextStyle(fontFamily: window.locale.languageCode == 'fa' ? "Nunito":'dana',fontSize: 14, fontWeight: FontWeight.w500,color: SoidColor.colorTitleText),
+          bodyText2: TextStyle(fontFamily: window.locale.languageCode == 'fa' ? "Nunito":'dana',fontSize: 16, fontWeight: FontWeight.w600,color: SoidColor.colorTitle),
+          headline4: TextStyle(fontFamily: window.locale.languageCode == 'fa' ? "Nunito":'dana',fontSize: 30, fontWeight: FontWeight.bold,color: SoidColor.colorTitle),
+          headline5: TextStyle(fontFamily: window.locale.languageCode == 'fa' ? "Nunito":'dana',fontSize: 17, fontWeight: FontWeight.w600,color: const Color.fromARGB(255, 0, 0, 0)),
+          headline6: TextStyle(fontFamily: window.locale.languageCode == 'fa' ? "Nunito":'dana',fontSize: 17, fontWeight: FontWeight.w500,color: SoidColor.colorDivider),
+          headlineLarge: TextStyle(fontFamily: window.locale.languageCode == 'fa' ? "Nunito":'dana',fontSize: 15,fontWeight: FontWeight.w500,color: SoidColor.colorTags),
         ),
       ),
-      home: const SingleScreen(),
+      home: Splash_Screen(),
     );
   }
 }

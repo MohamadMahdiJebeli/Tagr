@@ -22,8 +22,8 @@ List <Hashtag> tagList = [
 
 List <Hashtag> selectedTags=[];
 
-List<BlogModel> blogList = [
-  BlogModel(
+List<BlogModelfake> blogListfake = [
+  BlogModelfake(
       id: 1,
       imageUrl:"https://digiato.com/wp-content/uploads/2022/04/photo_2022-04-29_09-37-59.jpg",
       title: "Elon Musk sold about \$4 billion of Tesla stock",
@@ -37,7 +37,7 @@ List<BlogModel> blogList = [
 طبق گزارش‌های منتشر شده، ماسک در مجموع پنج فرم 4 را به کمیسیون بورس و اوراق بهادار ایالات متحده (SEC) ارائه کرده که تمام 138 تراکنش فردی او را پوشش می‌دهد. بر اساس محاسبات TechCrunch، ارزش سهام فروخته شده، نزدیک به 4 میلیارد دلار است. به گزارش رویترز، این میزان معادل 2.6 درصد از سهام او در تسلا محسوب می‌شود
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 2,
       imageUrl:
           "https://digiato.com/wp-content/uploads/2022/04/photo_2022-04-29_09-06-13.jpg",
@@ -52,7 +52,7 @@ List<BlogModel> blogList = [
 
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 3,
       imageUrl:
           "https://digiato.com/wp-content/uploads/2022/04/1200-178443098-space-exploration-risks_smaller.jpg",
@@ -69,7 +69,7 @@ List<BlogModel> blogList = [
 «آنتونی آبل» محقق دپارتمان مهندسی شیمی دانشگاه «برکلی» و یکی از نویسندگان این مطالعه می‌گوید: «برای تولید برق در مریخ، موقعیت کاوشگر در سطح سیاره عامل تعیین کننده است. اگر به خط استوا نزدیک باشد، استفاده از انرژی خورشیدی توصیه می‌شود و اگر به قطب‌ها نزدیک باشد، بهتر است از انرژی هسته‌ای استفاده شود.»
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 4,
       imageUrl:
           "https://digiato.com/wp-content/uploads/2022/04/13WELLREAD-CACIOPPO-superJumbo.jpg",
@@ -88,7 +88,7 @@ List<BlogModel> blogList = [
 این دو دانشمند به‌طرز عجیبی در زندگی باهم آشنا شدند و سپس ازدواج کردند. آن‌ها در دانشکده پزشکی «پریتزکر» در شیکاگو با یکدیگر همکار شدند و تیم تحقیقاتی خود را در آزمایشگاه تشکیل دادند.
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 5,
       imageUrl: "https://digiato.com/wp-content/uploads/2022/04/cghjm.jpg",
       title: "The creation of ultra-thin speakers by MIT engineers",
@@ -106,7 +106,7 @@ List<BlogModel> blogList = [
 مشکل اما اینجاست که این دسته از اسپیکرهای باریک یا بایست حالت ایستاده و آزاد داشته باشند، یا اینکه با کمی فاصله از سطوح دیگر در جای خود قرار بگیرند زیرا نصب کردن‌شان موجب کاهش قابلیت ارتعاش و تولید صوت در آنها می‌شود.
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 6,
       imageUrl:
           "https://digiato.com/wp-content/uploads/2022/04/photo_2022-04-29_09-37-59.jpg",
@@ -120,7 +120,7 @@ List<BlogModel> blogList = [
 طبق گزارش‌های منتشر شده، ماسک در مجموع پنج فرم 4 را به کمیسیون بورس و اوراق بهادار ایالات متحده (SEC) ارائه کرده که تمام 138 تراکنش فردی او را پوشش می‌دهد. بر اساس محاسبات TechCrunch، ارزش سهام فروخته شده، نزدیک به 4 میلیارد دلار است. به گزارش رویترز، این میزان معادل 2.6 درصد از سهام او در تسلا محسوب می‌شود
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 7,
       imageUrl:
           "https://digiato.com/wp-content/uploads/2022/04/photo_2022-04-29_09-06-13.jpg",
@@ -135,7 +135,7 @@ List<BlogModel> blogList = [
 
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 8,
       imageUrl:
           "https://digiato.com/wp-content/uploads/2022/04/1200-178443098-space-exploration-risks_smaller.jpg",
@@ -152,7 +152,7 @@ List<BlogModel> blogList = [
 «آنتونی آبل» محقق دپارتمان مهندسی شیمی دانشگاه «برکلی» و یکی از نویسندگان این مطالعه می‌گوید: «برای تولید برق در مریخ، موقعیت کاوشگر در سطح سیاره عامل تعیین کننده است. اگر به خط استوا نزدیک باشد، استفاده از انرژی خورشیدی توصیه می‌شود و اگر به قطب‌ها نزدیک باشد، بهتر است از انرژی هسته‌ای استفاده شود.»
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 9,
       imageUrl:
           "https://digiato.com/wp-content/uploads/2022/04/13WELLREAD-CACIOPPO-superJumbo.jpg",
@@ -171,7 +171,7 @@ List<BlogModel> blogList = [
 این دو دانشمند به‌طرز عجیبی در زندگی باهم آشنا شدند و سپس ازدواج کردند. آن‌ها در دانشکده پزشکی «پریتزکر» در شیکاگو با یکدیگر همکار شدند و تیم تحقیقاتی خود را در آزمایشگاه تشکیل دادند.
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 10,
       imageUrl: "https://digiato.com/wp-content/uploads/2022/04/cghjm.jpg",
       title: "ساخت اسپیکرهای فوق باریک توسط مهندسان MIT",
@@ -189,7 +189,7 @@ List<BlogModel> blogList = [
 مشکل اما اینجاست که این دسته از اسپیکرهای باریک یا بایست حالت ایستاده و آزاد داشته باشند، یا اینکه با کمی فاصله از سطوح دیگر در جای خود قرار بگیرند زیرا نصب کردن‌شان موجب کاهش قابلیت ارتعاش و تولید صوت در آنها می‌شود.
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 11,
       imageUrl:
           "https://digiato.com/wp-content/uploads/2022/04/photo_2022-04-29_09-37-59.jpg",
@@ -203,7 +203,7 @@ List<BlogModel> blogList = [
 طبق گزارش‌های منتشر شده، ماسک در مجموع پنج فرم 4 را به کمیسیون بورس و اوراق بهادار ایالات متحده (SEC) ارائه کرده که تمام 138 تراکنش فردی او را پوشش می‌دهد. بر اساس محاسبات TechCrunch، ارزش سهام فروخته شده، نزدیک به 4 میلیارد دلار است. به گزارش رویترز، این میزان معادل 2.6 درصد از سهام او در تسلا محسوب می‌شود
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 12,
       imageUrl:
           "https://digiato.com/wp-content/uploads/2022/04/photo_2022-04-29_09-06-13.jpg",
@@ -218,7 +218,7 @@ List<BlogModel> blogList = [
 
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 13,
       imageUrl:
           "https://digiato.com/wp-content/uploads/2022/04/1200-178443098-space-exploration-risks_smaller.jpg",
@@ -235,7 +235,7 @@ List<BlogModel> blogList = [
 «آنتونی آبل» محقق دپارتمان مهندسی شیمی دانشگاه «برکلی» و یکی از نویسندگان این مطالعه می‌گوید: «برای تولید برق در مریخ، موقعیت کاوشگر در سطح سیاره عامل تعیین کننده است. اگر به خط استوا نزدیک باشد، استفاده از انرژی خورشیدی توصیه می‌شود و اگر به قطب‌ها نزدیک باشد، بهتر است از انرژی هسته‌ای استفاده شود.»
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 14,
       imageUrl:
           "https://digiato.com/wp-content/uploads/2022/04/13WELLREAD-CACIOPPO-superJumbo.jpg",
@@ -254,7 +254,7 @@ List<BlogModel> blogList = [
 این دو دانشمند به‌طرز عجیبی در زندگی باهم آشنا شدند و سپس ازدواج کردند. آن‌ها در دانشکده پزشکی «پریتزکر» در شیکاگو با یکدیگر همکار شدند و تیم تحقیقاتی خود را در آزمایشگاه تشکیل دادند.
       """,
       views: "256"),
-  BlogModel(
+  BlogModelfake(
       id: 15,
       imageUrl: "https://digiato.com/wp-content/uploads/2022/04/cghjm.jpg",
       title: "ساخت اسپیکرهای فوق باریک توسط مهندسان MIT",

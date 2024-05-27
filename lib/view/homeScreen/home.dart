@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tagr/component/colors.dart';
 import 'package:tagr/component/string.dart';
+import 'package:tagr/controller/registerController.dart';
 import 'package:tagr/gen/assets.gen.dart';
 import 'package:tagr/view/aboutScreen.dart';
 import 'package:tagr/view/homeScreen/home_Screen.dart';
 import 'package:tagr/view/homeScreen/profileScreen.dart';
+import 'package:tagr/view/register/registerIntro.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
@@ -80,6 +82,7 @@ class Home extends StatelessWidget{
                   const Text("Support")
                 ],
               ),
+              // ignore: deprecated_member_use
               onTap:() => {launch("https://www.t.me/mohamadmahdi_jebeli")},
             ),
             const Divider(
@@ -94,7 +97,7 @@ class Home extends StatelessWidget{
                 ],
               ),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AboutScreen()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const AboutScreen()));
               },
             )
           ],
@@ -144,7 +147,7 @@ class Home extends StatelessWidget{
 }
 
 class BttmNavigation extends StatelessWidget {
-  const BttmNavigation({
+   BttmNavigation({
     super.key,
     required this.size,
     required this.mainScreenPages,
@@ -154,6 +157,9 @@ class BttmNavigation extends StatelessWidget {
   final Size size;
   final List<Widget> mainScreenPages;
   final Function changePage;
+
+  RegisterController registerController = Get.put(RegisterController(),permanent: false);
+
 
   @override
   Widget build(BuildContext context) {
@@ -186,13 +192,13 @@ class BttmNavigation extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(onPressed: () => changePage(0), icon: ImageIcon(Assets.icons.home.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,),
-              IconButton(onPressed: (){}, icon: ImageIcon(Assets.icons.add.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,),
+              IconButton(onPressed: (){registerController.checkLogin();}, icon: ImageIcon(Assets.icons.add.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,),
               IconButton(onPressed: () => changePage(1), icon: ImageIcon(Assets.icons.user.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,)
             ],
           ),
         ),
       ),
-              ),
+      ),
     );
   }
 }
