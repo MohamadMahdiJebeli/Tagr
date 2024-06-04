@@ -1,4 +1,4 @@
-import 'package:tagr/component/api_constant.dart';
+import 'package:tagr/constant/api_constant.dart';
 
 class ArticleModel{
   String? id;
@@ -12,21 +12,21 @@ class ArticleModel{
   String? createdAt;
 
   ArticleModel({
-    required this.id,
-    required this.title,
-    required this.image,
-    required this.catId,
-    required this.catName,
-    required this.author,
-    required this.view,
-    required this.status,
-    required this.createdAt,
+    this.id,
+    this.title,
+    this.image,
+    this.catId,
+    this.catName,
+    this.author,
+    this.view,
+    this.status,
+    this.createdAt,
   });
 
   ArticleModel.fromJson(Map<String,dynamic> element){
   id=element["id"];
   title=element["title"];
-  image=APIconstance.hostDLURL+element["image"];
+  image=APIconstant.hostDLURL+element["image"];
   catId=element["cat_id"];
   catName=element["cat_name"];
   author=element["author"];

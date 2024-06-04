@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:tagr/component/api_constant.dart';
-import 'package:tagr/component/colors.dart';
-import 'package:tagr/component/stroge_constant.dart';
+import 'package:tagr/constant/api_constant.dart';
+import 'package:tagr/constant/colors.dart';
+import 'package:tagr/constant/stroge_constant.dart';
 import 'package:tagr/gen/assets.gen.dart';
 import 'package:tagr/main.dart';
 import 'package:tagr/services/dioService.dart';
@@ -28,7 +28,7 @@ class RegisterController extends GetxController {
       'email':emailTextEditingController.text,
       'command':'register'
     };
-    var response=await DioService().postMethod(map, APIconstance.postRegister);
+    var response=await DioService().postMethod(map, APIconstant.postRegister);
     email = emailTextEditingController.text;
     user_id = response.data['user_id'];
   }
@@ -43,7 +43,7 @@ class RegisterController extends GetxController {
 
     print(map);
 
-    var response=await DioService().postMethod(map, APIconstance.postRegister);
+    var response=await DioService().postMethod(map, APIconstant.postRegister);
 
     print(response.data);
 
@@ -52,8 +52,8 @@ class RegisterController extends GetxController {
     switch(status){
       case 'verified':
       var box = GetStorage();
-      box.write(token, response.data['token']);
-      box.write(user_id, response.data['user_id']);
+      box.write(StorageKey.token, response.data['token']);
+      box.write(StorageKey.userId, response.data['user_id']);
 
       Get.offAll(const UserInfo());
       break;
@@ -69,7 +69,7 @@ class RegisterController extends GetxController {
   }
 
   checkLogin(){
-    if (GetStorage().read(token)==null) {
+    if (GetStorage().read(StorageKey.token)==null) {
       Get.to(RegisterIntro());
     }else{
       addBottomSheet();
@@ -77,7 +77,7 @@ class RegisterController extends GetxController {
   }
 
   firstOpen(){
-    if (GetStorage().read(token)==null) {
+    if (GetStorage().read(StorageKey.token)==null) {
       Get.offAll(RegisterIntro());
     }else{
       Get.offAllNamed(NamedRoute.routeHome);

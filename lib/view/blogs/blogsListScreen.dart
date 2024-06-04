@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tagr/component/colors.dart';
+import 'package:tagr/constant/colors.dart';
 import 'package:tagr/component/component.dart';
 import 'package:tagr/controller/blogs/blogListScreen_Controller.dart';
 import 'package:tagr/controller/blogs/single_Blog_Controller.dart';

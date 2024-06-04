@@ -15,7 +15,7 @@ class BlogBinding implements Bindings{
 class BlogManagerBinding implements Bindings{
   @override
   void dependencies() {
-    Get.put(ManageBlogsController());
+    Get.lazyPut(() => ManageBlogsController());
   }
 
 }

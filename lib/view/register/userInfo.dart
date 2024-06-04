@@ -4,11 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tagr/component/colors.dart';
+import 'package:tagr/constant/colors.dart';
 import 'package:tagr/component/component.dart';
 import 'package:tagr/gen/assets.gen.dart';
 import 'package:tagr/models/fakeData.dart';
-import 'package:tagr/component/string.dart';
+import 'package:tagr/constant/string.dart';
 import 'package:tagr/view/homeScreen/home.dart';
 
 class UserInfo extends StatefulWidget {

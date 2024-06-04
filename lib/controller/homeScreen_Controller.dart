@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:tagr/component/api_constant.dart';
+import 'package:tagr/constant/api_constant.dart';
 import 'package:tagr/models/articleModel.dart';
 import 'package:tagr/models/podcastModel.dart';
 import 'package:tagr/models/posterModel.dart';
@@ -21,7 +21,7 @@ class HomeScreen_Controller extends GetxController{
   }
 
   getHomeItems() async{
-    var response = await DioService().getMethod(APIconstance.getHomeItems);
+    var response = await DioService().getMethod(APIconstant.getHomeItems);
     homeScreenLoading.value = true;
 
       if (response.statusCode==200) {

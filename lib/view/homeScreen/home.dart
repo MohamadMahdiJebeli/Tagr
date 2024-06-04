@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:tagr/component/colors.dart';
-import 'package:tagr/component/string.dart';
+import 'package:tagr/constant/colors.dart';
+import 'package:tagr/constant/string.dart';
 import 'package:tagr/controller/registerController.dart';
 import 'package:tagr/gen/assets.gen.dart';
 import 'package:tagr/view/aboutScreen.dart';

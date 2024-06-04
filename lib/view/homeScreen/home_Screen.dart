@@ -9,8 +9,8 @@ import 'package:tagr/controller/homeScreen_Controller.dart';
 import 'package:tagr/controller/blogs/single_Blog_Controller.dart';
 import 'package:tagr/gen/assets.gen.dart';
 import 'package:tagr/models/fakeData.dart';
-import 'package:tagr/component/colors.dart';
-import 'package:tagr/component/string.dart';
+import 'package:tagr/constant/colors.dart';
+import 'package:tagr/constant/string.dart';
 import 'package:tagr/view/blogs/blogsListScreen.dart';
 
 // ignore: must_be_immutable

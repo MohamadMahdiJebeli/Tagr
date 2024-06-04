@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:tagr/component/colors.dart';
+import 'package:tagr/constant/colors.dart';
 import 'package:tagr/component/component.dart';
 import 'package:tagr/controller/blogs/blogListScreen_Controller.dart';
 import 'package:tagr/controller/blogs/single_Blog_Controller.dart';
@@ -61,7 +62,9 @@ class SingleBlogScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          ImageIcon(Assets.icons.back.provider(),size: 25,),
+                          GestureDetector(
+                            onTap: () => Get.back(),
+                            child: ImageIcon(Assets.icons.back.provider(),size: 25,)),
                           Row(
                             children: [
                               ImageIcon(Assets.icons.heart.provider(),size: 25,),
@@ -120,49 +123,7 @@ class SingleBlogScreen extends StatelessWidget {
                   singleBlogController.blogInfoModel.value.content!
                 )
               ),
-              SizedBox(
-                height: 50,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: singleBlogController.relatedTags.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () async {
-                        var tagids =singleBlogController.relatedTags[index].id!;
-                        await Get.find<BlogListController>().getBlogListTags(tagids);
-
-                        var tagName = singleBlogController.relatedTags[index].title!;
-                        Get.to(BlogsListScreen(title: tagName));
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(index==0?21:8, 8, 8, 8),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(24)),
-                        
-                            gradient: LinearGradient(
-                              colors: GradientColor.tagsColor,
-                              begin: Alignment.centerRight,
-                              end: Alignment.centerLeft
-                              )
-                          ),
-                        
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                ImageIcon(Assets.icons.hashtags.provider(),color: Colors.white,size: 14,),
-                                const SizedBox(width: 6,),
-                                // ignore: deprecated_member_use
-                                Text(singleBlogController.relatedTags[index].title!,style: textTheme.bodyText1)
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  },), 
-              ),
+              Tags(textTheme),
               const SizedBox(height: 15,),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -262,5 +223,51 @@ class SingleBlogScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  SizedBox Tags(TextTheme textTheme) {
+    return SizedBox(
+              height: 50,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: singleBlogController.relatedTags.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () async {
+                      var tagids =singleBlogController.relatedTags[index].id!;
+                      await Get.find<BlogListController>().getBlogListTags(tagids);
+
+                      var tagName = singleBlogController.relatedTags[index].title!;
+                      Get.to(BlogsListScreen(title: tagName));
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(index==0?21:8, 8, 8, 8),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(24)),
+                      
+                          gradient: LinearGradient(
+                            colors: GradientColor.tagsColor,
+                            begin: Alignment.centerRight,
+                            end: Alignment.centerLeft
+                            )
+                        ),
+                      
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              ImageIcon(Assets.icons.hashtags.provider(),color: Colors.white,size: 14,),
+                              const SizedBox(width: 6,),
+                              // ignore: deprecated_member_use
+                              Text(singleBlogController.relatedTags[index].title!,style: textTheme.bodyText1)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },), 
+            );
   }
 }

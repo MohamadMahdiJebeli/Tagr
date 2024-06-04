@@ -5,7 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:tagr/component/colors.dart';
+import 'package:tagr/constant/colors.dart';
 import 'package:tagr/controller/registerController.dart';
 import 'package:tagr/gen/assets.gen.dart';
 import 'package:tagr/view/homeScreen/home.dart';

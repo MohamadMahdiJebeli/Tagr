@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:tagr/component/component.dart';
 import 'package:tagr/gen/assets.gen.dart';
-import 'package:tagr/component/colors.dart';
-import 'package:tagr/component/string.dart';
+import 'package:tagr/constant/colors.dart';
+import 'package:tagr/constant/string.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({

@@ -10,10 +10,11 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tagr/binding.dart';
-import 'package:tagr/component/colors.dart';
+import 'package:tagr/constant/colors.dart';
 import 'package:tagr/controller/registerController.dart';
 import 'package:tagr/my_http_overrides.dart';
 import 'package:tagr/view/blogs/manageBlogs.dart';
+import 'package:tagr/view/blogs/singleManageBlogScreen.dart';
 import 'package:tagr/view/homeScreen/home.dart';
 import 'package:tagr/view/homeScreen/home_Screen.dart';
 import 'package:tagr/view/blogs/singleBlogScreen.dart';
@@ -43,7 +44,8 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: NamedRoute.routeHome, page:() => Home(),binding: RegisterBinding()),
         GetPage(name: NamedRoute.routeSingleBlog, page:() =>SingleBlogScreen(),binding: BlogBinding()),
-        GetPage(name: NamedRoute.routeManageBlog,page:() => ManageBlogs(),binding: BlogManagerBinding())
+        GetPage(name: NamedRoute.routeManageBlog,page:() => ManageBlogs(),binding: BlogManagerBinding()),
+        GetPage(name: NamedRoute.routeSingleManageBlogScreen, page: () => SingleManageBlogScreen(),binding: BlogManagerBinding())
       ],
       home: Splash_Screen(),
     );
@@ -89,4 +91,5 @@ class NamedRoute{
   static String routeHome = '/HomeScreen';
   static String routeSingleBlog = '/SingleBlogScreen';
   static String routeManageBlog = "/ManageBlog";
+  static String routeSingleManageBlogScreen = "/SingleManageBlogScreen";
 }

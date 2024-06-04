@@ -3,7 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:tagr/controller/homeScreen_Controller.dart';
 import 'package:tagr/gen/assets.gen.dart';
-import 'colors.dart';
+import '../constant/colors.dart';
 
 class ProfileDivider extends StatelessWidget {
   const ProfileDivider({
@@ -68,7 +68,7 @@ class loading extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SpinKitFadingCircle(
             color: SoidColor.colorLoading,
-            size: 30,
+            size: 25,
             );
 }}
 

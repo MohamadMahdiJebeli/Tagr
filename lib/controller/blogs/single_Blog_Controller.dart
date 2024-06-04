@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:tagr/component/api_constant.dart';
+import 'package:tagr/constant/api_constant.dart';
 import 'package:tagr/models/articleModel.dart';
 import 'package:tagr/models/blogInfoModel.dart';
 import 'package:tagr/models/tagsModel.dart';
@@ -9,7 +9,7 @@ import 'package:tagr/view/blogs/singleBlogScreen.dart';
 class SingleBlogController extends GetxController{
   RxBool singleBlogLoading = false.obs;
   RxInt id = RxInt(0);
-  Rx<BlogInfoModel> blogInfoModel = BlogInfoModel().obs;
+  Rx<BlogInfoModel> blogInfoModel = BlogInfoModel(null,null,null).obs;
   RxList<TagsModel> relatedTags = RxList();
   RxList<ArticleModel> relatedBlogs = RxList();
 
@@ -21,13 +21,13 @@ class SingleBlogController extends GetxController{
 
   getBlogInfo(var id) async{ 
   
-  blogInfoModel = BlogInfoModel().obs;
+  blogInfoModel = BlogInfoModel(null, null,null).obs;
 
   singleBlogLoading.value=true;
 
   var userId='';
 
-  var response =  await DioService().getMethod("${APIconstance.baseURL}article/get.php?command=info&id=$id&user_id=$userId");
+  var response =  await DioService().getMethod("${APIconstant.baseURL}article/get.php?command=info&id=$id&user_id=$userId");
 
   if (response.statusCode==200) {
     

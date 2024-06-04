@@ -21,7 +21,6 @@ class SoidColor{
   static const Color colorLoading = Color.fromARGB(255, 123, 250, 218);
   static const Color colorDivider = Color.fromARGB(255, 76, 84, 78);
 }
-
 class GradientColor{
   static const List<Color> bottomNavColor= [Color.fromARGB(255, 0, 117, 91), Color.fromARGB(255, 18, 32, 22),];
   static const List<Color> bottomNavBGColor=[Color.fromARGB(255, 162, 230, 214),Color.fromARGB(71, 80, 110, 115) ,Color.fromARGB(0, 0, 117, 91),];

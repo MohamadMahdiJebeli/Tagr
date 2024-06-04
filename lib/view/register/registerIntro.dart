@@ -1,10 +1,10 @@
 // ignore_for_file: file_names, deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tagr/component/colors.dart';
+import 'package:tagr/constant/colors.dart';
 import 'package:tagr/controller/registerController.dart';
 import 'package:tagr/gen/assets.gen.dart';
-import 'package:tagr/component/string.dart';
+import 'package:tagr/constant/string.dart';
 import 'package:validators/validators.dart';
 
 // ignore: must_be_immutable
@@ -82,6 +82,7 @@ class RegisterIntro extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(24.0),
                               child: TextField(
+                                keyboardType: TextInputType.emailAddress,
                                 controller: registerController.emailTextEditingController,
                                 onChanged: (value) {
                                   // ignore: avoid_print, prefer_interpolation_to_compose_strings

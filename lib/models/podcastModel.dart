@@ -1,4 +1,4 @@
-import 'package:tagr/component/api_constant.dart';
+import 'package:tagr/constant/api_constant.dart';
 
 class PodcastModel{
   String? id;
@@ -24,7 +24,7 @@ class PodcastModel{
   PodcastModel.fromJson(Map<String,dynamic> element){
     id = element["id"];
     title = element["title"];
-    poster = APIconstance.hostDLURL+element["poster"];
+    poster = APIconstant.hostDLURL+element["poster"];
     catName = element["cat_name"];
     author = element["author"];
     view = element["view"];
