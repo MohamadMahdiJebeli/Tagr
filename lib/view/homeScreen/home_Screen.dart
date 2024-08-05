@@ -8,10 +8,12 @@ import 'package:tagr/controller/blogs/blogListScreen_Controller.dart';
 import 'package:tagr/controller/homeScreen_Controller.dart';
 import 'package:tagr/controller/blogs/single_Blog_Controller.dart';
 import 'package:tagr/gen/assets.gen.dart';
+import 'package:tagr/main.dart';
 import 'package:tagr/models/fakeData.dart';
 import 'package:tagr/constant/colors.dart';
 import 'package:tagr/constant/string.dart';
 import 'package:tagr/view/blogs/blogsListScreen.dart';
+import 'package:tagr/view/podcasts/podcastListScreen.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
@@ -111,36 +113,41 @@ class HomeScreen extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: homeScreen_Controller.topPodcastList.length,
           itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.fromLTRB(index==0?spaceWidth:8, 8, 8, 8),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: size.height/5.2,
-                  width: size.width/2.5,
-                    
-                  child: CachedNetworkImage(
-                    imageUrl: homeScreen_Controller.topPodcastList[index].poster!,
-                    imageBuilder: (context, imageProvider) =>
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(Radius.circular(14)),
-                        image: DecorationImage(
-                          image: imageProvider,
-                          fit: BoxFit.cover
-                          )
+          return GestureDetector(
+            onTap: () {
+              Get.toNamed(NamedRoute.routeSinglePodcast,arguments: homeScreen_Controller.topPodcastList[index]);
+            },
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(index==0?spaceWidth:8, 8, 8, 8),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: size.height/5.2,
+                    width: size.width/2.5,
+                      
+                    child: CachedNetworkImage(
+                      imageUrl: homeScreen_Controller.topPodcastList[index].poster!,
+                      imageBuilder: (context, imageProvider) =>
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.all(Radius.circular(14)),
+                          image: DecorationImage(
+                            image: imageProvider,
+                            fit: BoxFit.cover
+                            )
+                        ),
                       ),
+                      placeholder: (context, url) =>
+                      const loading(),
+                      errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50,),
                     ),
-                    placeholder: (context, url) =>
-                    const loading(),
-                    errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50,),
                   ),
-                ),
-                const SizedBox(height: 6,),
-                SizedBox(
-                  width: size.width/2.5,
-                  child: Text(homeScreen_Controller.topPodcastList[index].title!,style: textTheme.headline3,overflow: TextOverflow.ellipsis,maxLines: 2,))
-              ],
+                  const SizedBox(height: 6,),
+                  SizedBox(
+                    width: size.width/2.5,
+                    child: Text(homeScreen_Controller.topPodcastList[index].title!,style: textTheme.headline3,overflow: TextOverflow.ellipsis,maxLines: 2,))
+                ],
+              ),
             ),
           );  
         },),
@@ -263,14 +270,19 @@ class HomePodcastHottest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: spaceWidth,bottom: 9),
-      child: Row(
-        children: [
-          ImageIcon(Assets.icons.podcast.provider(),color: SoidColor.colorSubject,size: 25,),
-          const SizedBox(width: 8,),
-          Text(string.showHottestPodcasts,style: textTheme.headline2,)
-        ],
+    return GestureDetector(
+      onTap: (){
+        Get.to(PodcastsListScreen(title: "Hottest Podcasts",));
+      },
+      child: Padding(
+        padding: EdgeInsets.only(left: spaceWidth,bottom: 9),
+        child: Row(
+          children: [
+            ImageIcon(Assets.icons.podcast.provider(),color: SoidColor.colorSubject,size: 25,),
+            const SizedBox(width: 8,),
+            Text(string.showHottestPodcasts,style: textTheme.headline2,)
+          ],
+        ),
       ),
     );
   }

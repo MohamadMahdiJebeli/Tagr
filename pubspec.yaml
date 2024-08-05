@@ -45,6 +45,9 @@ dependencies:
   get_storage: ^2.1.1
   file_picker: ^5.2.0
   html_editor_enhanced: ^2.5.0
+  percent_indicator: ^4.2.3
+  just_audio: ^0.9.39
+  audio_video_progress_bar: ^2.0.3
 
 
 

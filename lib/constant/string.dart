@@ -1,7 +1,7 @@
 // ignore: camel_case_types
 class string{
   static const String showHottestBlog="Show the hottest Blogs";
-  static const String showHottestPodcasts="Show the hottest Podcasts";
+  static const String showHottestPodcasts="Show Hottest Podcasts";
   static const String related="Related";
   static const String uploadArticle= "Upload Article";
   static const String uploadPodcast= "Upload Podcast";

@@ -31,6 +31,13 @@ class $AssetsIconsGen {
   /// File path: assets/icons/add.png
   AssetGenImage get add => const AssetGenImage('assets/icons/add.png');
 
+  /// File path: assets/icons/back p.png
+  AssetGenImage get backP => const AssetGenImage('assets/icons/back p.png');
+
+  /// File path: assets/icons/back-button.png
+  AssetGenImage get backButton =>
+      const AssetGenImage('assets/icons/back-button.png');
+
   /// File path: assets/icons/back.png
   AssetGenImage get back => const AssetGenImage('assets/icons/back.png');
 
@@ -58,6 +65,27 @@ class $AssetsIconsGen {
   /// File path: assets/icons/logout.png
   AssetGenImage get logout => const AssetGenImage('assets/icons/logout.png');
 
+  /// File path: assets/icons/next p.png
+  AssetGenImage get nextP => const AssetGenImage('assets/icons/next p.png');
+
+  /// File path: assets/icons/next-button.png
+  AssetGenImage get nextButton =>
+      const AssetGenImage('assets/icons/next-button.png');
+
+  /// File path: assets/icons/next.png
+  AssetGenImage get next => const AssetGenImage('assets/icons/next.png');
+
+  /// File path: assets/icons/play-button.png
+  AssetGenImage get playButton =>
+      const AssetGenImage('assets/icons/play-button.png');
+
+  /// File path: assets/icons/play-circle.png
+  AssetGenImage get playCircle =>
+      const AssetGenImage('assets/icons/play-circle.png');
+
+  /// File path: assets/icons/play.png
+  AssetGenImage get play => const AssetGenImage('assets/icons/play.png');
+
   /// File path: assets/icons/podcast.png
   AssetGenImage get podcast => const AssetGenImage('assets/icons/podcast.png');
 
@@ -66,6 +94,14 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/share.png
   AssetGenImage get share => const AssetGenImage('assets/icons/share.png');
+
+  /// File path: assets/icons/skip-back-button.png
+  AssetGenImage get skipBackButton =>
+      const AssetGenImage('assets/icons/skip-back-button.png');
+
+  /// File path: assets/icons/skip-next-button.png
+  AssetGenImage get skipNextButton =>
+      const AssetGenImage('assets/icons/skip-next-button.png');
 
   /// File path: assets/icons/user.png
   AssetGenImage get user => const AssetGenImage('assets/icons/user.png');
@@ -77,6 +113,8 @@ class $AssetsIconsGen {
         favPodcast,
         about,
         add,
+        backP,
+        backButton,
         back,
         blogs,
         customerSupport,
@@ -85,9 +123,17 @@ class $AssetsIconsGen {
         heart,
         home,
         logout,
+        nextP,
+        nextButton,
+        next,
+        playButton,
+        playCircle,
+        play,
         podcast,
         remove,
         share,
+        skipBackButton,
+        skipNextButton,
         user
       ];
 }

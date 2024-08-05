@@ -18,6 +18,7 @@ import 'package:tagr/view/blogs/singleManageBlogScreen.dart';
 import 'package:tagr/view/homeScreen/home.dart';
 import 'package:tagr/view/homeScreen/home_Screen.dart';
 import 'package:tagr/view/blogs/singleBlogScreen.dart';
+import 'package:tagr/view/podcasts/singlePodcastScreen.dart';
 import 'package:tagr/view/splashScreen.dart';
 
 
@@ -45,7 +46,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: NamedRoute.routeHome, page:() => Home(),binding: RegisterBinding()),
         GetPage(name: NamedRoute.routeSingleBlog, page:() =>SingleBlogScreen(),binding: BlogBinding()),
         GetPage(name: NamedRoute.routeManageBlog,page:() => ManageBlogs(),binding: BlogManagerBinding()),
-        GetPage(name: NamedRoute.routeSingleManageBlogScreen, page: () => SingleManageBlogScreen(),binding: BlogManagerBinding())
+        GetPage(name: NamedRoute.routeSingleManageBlogScreen, page: () => SingleManageBlogScreen(),binding: BlogManagerBinding()),
+        GetPage(name: NamedRoute.routeSinglePodcast, page:()=> SinglePodcastScrren())
       ],
       home: Splash_Screen(),
     );
@@ -88,8 +90,12 @@ class MyApp extends StatelessWidget {
 }
 
 class NamedRoute{
+  
+  NamedRoute._();
+
   static String routeHome = '/HomeScreen';
   static String routeSingleBlog = '/SingleBlogScreen';
   static String routeManageBlog = "/ManageBlog";
   static String routeSingleManageBlogScreen = "/SingleManageBlogScreen";
+  static String routeSinglePodcast = "/SinglePodcastScreen";
 }

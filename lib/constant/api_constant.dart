@@ -6,6 +6,8 @@ class APIconstant{
   static const postRegister = '${baseURL}register/action.php';
   static const publishByMe = baseURL+'article/get.php?command=published_by_me&user_id=';
   static const blogPost = baseURL+"article/post.php";
+  static const getPodcastList = baseURL+"podcast/get.php?command=new&user_id=";
+  static const getPodcastFile = baseURL+"podcast/get.php?command=get_files&podcats_id=";
 }
 
 class APIBlogKeyConstant{
