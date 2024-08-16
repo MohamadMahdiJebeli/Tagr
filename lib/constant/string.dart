@@ -1,4 +1,6 @@
 // ignore: camel_case_types
+import 'package:flutter/services.dart';
+
 class string{
   static const String showHottestBlog="Show the hottest Blogs";
   static const String showHottestPodcasts="Show Hottest Podcasts";
@@ -35,4 +37,5 @@ I hope you enjoy using Tagr! :)
   """;
   static const String notice="The API of this app belongs to TechBlog.";
   static const String blogEmpty="You have not posted any blog yet!";
+  static late String userName = "";
 }

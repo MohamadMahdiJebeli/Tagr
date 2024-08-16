@@ -1,17 +1,51 @@
 // ignore_for_file: file_names, deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tagr/constant/colors.dart';
+import 'package:tagr/constant/stroge_constant.dart';
 import 'package:tagr/controller/registerController.dart';
 import 'package:tagr/gen/assets.gen.dart';
 import 'package:tagr/constant/string.dart';
 import 'package:validators/validators.dart';
 
 // ignore: must_be_immutable
-class RegisterIntro extends StatelessWidget {
-  RegisterIntro({super.key});
+class RegisterIntro extends StatefulWidget {
+  const RegisterIntro({super.key});
 
+  @override
+  State<RegisterIntro> createState() => _RegisterIntroState();
+}
+
+class _RegisterIntroState extends State<RegisterIntro> {
   var registerController = Get.find<RegisterController>();
+  final TextEditingController _emailController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _loadEmail();
+  }
+
+  void _loadEmail() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? storedEmail = prefs.getString('email');
+    if (storedEmail != null) {
+      setState(() {
+        emailAc = storedEmail;
+        _emailController.text=emailAc;
+      });
+    }
+  }
+
+  void _saveEmail(String Email) async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('email', Email);
+    setState(() {
+      emailAc = Email;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,6 +132,8 @@ class RegisterIntro extends StatelessWidget {
                             ),
                             ElevatedButton(
                             onPressed: () {
+                              emailAc=_emailController.text;
+                              _saveEmail(emailAc);
                               registerController.register();
                               Navigator.pop(context);
                               verifyBttmSheet(context, size, textTheme);
@@ -112,6 +148,7 @@ class RegisterIntro extends StatelessWidget {
                   );
                 },);
   }
+
   Future<dynamic> verifyBttmSheet(BuildContext context, Size size, TextTheme textTheme) {
 
     return showModalBottomSheet(

@@ -25,7 +25,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
 
   @override
   void initState(){
-    Future.delayed(const Duration(seconds: 3),).then((value) => 
+    Future.delayed(const Duration(seconds: 2),).then((value) => 
     registerController.firstOpen()
     );
     super.initState();

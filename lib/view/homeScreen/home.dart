@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tagr/constant/colors.dart';
 import 'package:tagr/constant/string.dart';
+import 'package:tagr/constant/stroge_constant.dart';
 import 'package:tagr/controller/registerController.dart';
 import 'package:tagr/gen/assets.gen.dart';
 import 'package:tagr/view/aboutScreen.dart';
@@ -14,10 +16,39 @@ import 'package:url_launcher/url_launcher.dart';
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
 // ignore: must_be_immutable
-class Home extends StatelessWidget{
-  RxInt selectedIndex = 0.obs;
+class Home extends StatefulWidget{
 
   Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  RxInt selectedIndex = 0.obs;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _loadUserName();
+  }
+
+  void _loadUserName() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? storedUserName = prefs.getString('userName');
+  
+  if (storedUserName != null) {
+    setState(() {
+      userNameAc = storedUserName;
+    });
+    print("Loaded userName: $storedUserName");
+  } else {
+    print("No userName found in storage");
+  }
+}
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -48,9 +79,9 @@ class Home extends StatelessWidget{
                     Image.asset(Assets.images.user.path,scale: 5,),
                     SizedBox(height: size.height/65,),
                     // ignore: deprecated_member_use
-                    Text("Mohamad Mahdi Jebeli",style: textTheme.headline5,),
-                    SizedBox(height: size.height/190,),
-                    Text("mohamadmahdijebeli@gmail.com",style: textTheme.headlineLarge,)
+                    SizedBox(height: size.height/100,),
+                    Text(userNameAc,style: const TextStyle(fontSize: 25,color: Colors.black),),
+                    //Text("mohamadmahdijebeli@gmail.com",style: textTheme.headlineLarge,)
                   ],
                 ),
               ),
@@ -191,7 +222,9 @@ class BttmNavigation extends StatelessWidget {
             children: [
               IconButton(onPressed: () => changePage(0), icon: ImageIcon(Assets.icons.home.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,),
               IconButton(onPressed: (){Get.find<RegisterController>().checkLogin();}, icon: ImageIcon(Assets.icons.add.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,),
-              IconButton(onPressed: () => changePage(1), icon: ImageIcon(Assets.icons.user.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,)
+              IconButton(onPressed: () {
+                changePage(1);
+              }, icon: ImageIcon(Assets.icons.user.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,)
             ],
           ),
         ),

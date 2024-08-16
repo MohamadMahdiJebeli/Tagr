@@ -9,10 +9,11 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:tagr/binding.dart';
+import 'package:tagr/route_manager/binding.dart';
 import 'package:tagr/constant/colors.dart';
 import 'package:tagr/controller/registerController.dart';
 import 'package:tagr/my_http_overrides.dart';
+import 'package:tagr/route_manager/pages.dart';
 import 'package:tagr/view/blogs/manageBlogs.dart';
 import 'package:tagr/view/blogs/singleManageBlogScreen.dart';
 import 'package:tagr/view/homeScreen/home.dart';
@@ -20,7 +21,6 @@ import 'package:tagr/view/homeScreen/home_Screen.dart';
 import 'package:tagr/view/blogs/singleBlogScreen.dart';
 import 'package:tagr/view/podcasts/singlePodcastScreen.dart';
 import 'package:tagr/view/splashScreen.dart';
-
 
 
 Future<void> main() async {
@@ -42,13 +42,7 @@ class MyApp extends StatelessWidget {
 
       //Themes
       theme: lightTheme(),
-      getPages: [
-        GetPage(name: NamedRoute.routeHome, page:() => Home(),binding: RegisterBinding()),
-        GetPage(name: NamedRoute.routeSingleBlog, page:() =>SingleBlogScreen(),binding: BlogBinding()),
-        GetPage(name: NamedRoute.routeManageBlog,page:() => ManageBlogs(),binding: BlogManagerBinding()),
-        GetPage(name: NamedRoute.routeSingleManageBlogScreen, page: () => SingleManageBlogScreen(),binding: BlogManagerBinding()),
-        GetPage(name: NamedRoute.routeSinglePodcast, page:()=> SinglePodcastScrren())
-      ],
+      getPages: Pages.pages,
       home: Splash_Screen(),
     );
   }
