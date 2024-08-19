@@ -8,8 +8,8 @@ class string{
   static const String uploadArticle= "Upload Article";
   static const String uploadPodcast= "Upload Podcast";
   static const String editPicture="Edit Profile Picture";
-  static const String favoriteBlogs="My Favorite Blogs";
-  static const String favoritePodcast="My Favorite Podcasts";
+  static const String favoriteBlogs="Blog Management";
+  static const String favoritePodcast="Podcast Management";
   static const String logOut="Log Out";
   static const String welcome = """Hi!
   Welcome to Tagr! :)""";
@@ -37,5 +37,6 @@ I hope you enjoy using Tagr! :)
   """;
   static const String notice="The API of this app belongs to TechBlog.";
   static const String blogEmpty="You have not posted any blog yet!";
-  static late String userName = "";
+  static String userName = "";
+  static const String PodcastEmpty="You have not posted any Podcast yet!";
 }

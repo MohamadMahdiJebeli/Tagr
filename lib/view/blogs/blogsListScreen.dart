@@ -5,6 +5,7 @@ import 'package:tagr/component/component.dart';
 import 'package:tagr/constant/colors.dart';
 import 'package:tagr/controller/blogs/blogListScreen_Controller.dart';
 import 'package:tagr/controller/blogs/single_Blog_Controller.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 // ignore: must_be_immutable
 class BlogsListScreen extends StatelessWidget {
@@ -42,53 +43,55 @@ class BlogsListScreen extends StatelessWidget {
                     }),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          height: size.height/10,
-                          width: size.width/4,
-                          child: CachedNetworkImage(
-                            imageUrl: bloglistController.blogsList[index].image!, 
-                            imageBuilder: (context, imageProvider) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.all(Radius.circular(16)),
-                                  image: DecorationImage(image: imageProvider,fit: BoxFit.cover),
-                                ),
-                              );
-                            },
-                            placeholder: (context, url) => const loading(),
-                          
-                            errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50,),
-                            ),
-                        ),
-                    
-                          SizedBox(width: size.width/25,),
-                    
+                    child: ZoomTapAnimation(
+                      child: Row(
+                        children: [
                           SizedBox(
-                            width: size.width/1.7,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                // ignore: deprecated_member_use
-                                Text(bloglistController.blogsList[index].title!,style: textTheme.headline5,overflow: TextOverflow.ellipsis,maxLines: 2,),
-                                
-                                Row(
+                            height: size.height/10,
+                            width: size.width/4,
+                            child: CachedNetworkImage(
+                              imageUrl: bloglistController.blogsList[index].image!, 
+                              imageBuilder: (context, imageProvider) {
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(Radius.circular(16)),
+                                    image: DecorationImage(image: imageProvider,fit: BoxFit.cover),
+                                  ),
+                                );
+                              },
+                              placeholder: (context, url) => const loading(),
+                            
+                              errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50,),
+                              ),
+                          ),
+                      
+                            SizedBox(width: size.width/25,),
+                      
+                            SizedBox(
+                              width: size.width/1.7,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  // ignore: deprecated_member_use
+                                  Text(bloglistController.blogsList[index].title!,style: textTheme.headline5,overflow: TextOverflow.ellipsis,maxLines: 2,),
                                   
-                                  children: [
-                                    // ignore: deprecated_member_use
-                                    Text(bloglistController.blogsList[index].author!,style: textTheme.headline6,),
-                                    SizedBox(width: size.width/5,),
-                                    // ignore: deprecated_member_use
-                                    Text(bloglistController.blogsList[index].view!,style: textTheme.headline6,),
-                                    const SizedBox(width: 5,),
-                                    const Icon(Icons.remove_red_eye,color: SoidColor.colorDivider,size: 17,),
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                      ],
+                                  Row(
+                                    
+                                    children: [
+                                      // ignore: deprecated_member_use
+                                      Text(bloglistController.blogsList[index].author!,style: textTheme.headline6,),
+                                      SizedBox(width: size.width/5,),
+                                      // ignore: deprecated_member_use
+                                      Text(bloglistController.blogsList[index].view!,style: textTheme.headline6,),
+                                      const SizedBox(width: 5,),
+                                      const Icon(Icons.remove_red_eye,color: SoidColor.colorDivider,size: 17,),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            )
+                        ],
+                      ),
                     ),
                   ),
                 );

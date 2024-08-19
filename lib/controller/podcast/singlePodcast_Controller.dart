@@ -9,78 +9,103 @@ import 'package:tagr/constant/api_constant.dart';
 import 'package:tagr/models/podcastFileModel.dart';
 import 'package:tagr/services/dioService.dart';
 
-class SinglePodcastController extends GetxController{
-  
+import 'dart:async';
+import 'dart:developer';
+
+import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
+
+
+class SinglePodcastController extends GetxController {
   var id;
 
   SinglePodcastController({this.id});
 
-  RxBool Loading = false.obs;
+  RxBool loading = false.obs;
   RxList<PodcastsFileModel> podcastFileList = RxList();
-  late var playlist;
   final player = AudioPlayer();
-  RxBool isPlaying = false.obs;
-  late RxInt currentFileIndex;
-
-  var selectedTitle;  
+  late ConcatenatingAudioSource playList;
+  RxBool playState = false.obs;
+  RxBool isLoopAll = false.obs;
+  RxInt currentFileIndex = 0.obs;
 
   @override
   onInit() async {
     super.onInit();
-    playlist = ConcatenatingAudioSource(
-      useLazyPreparation: true,
-      children: []);
-    getPodcastFile();
-    await player.setAudioSource(playlist,
+    playList = ConcatenatingAudioSource(useLazyPreparation: true, children: []);
+
+    await getPodcastFiles();
+    await player.setAudioSource(playList,
         initialIndex: 0, initialPosition: Duration.zero);
   }
-  getPodcastFile() async{
 
-    Loading.value=true;
+  getPodcastFiles() async {
+    loading.value = true;
 
-    var response = await DioService().getMethod(APIconstant.getPodcastFile+id);
+    var response =
+        await DioService().getMethod(APIconstant.getPodcastFile + id);
 
-    if (response.statuscode==200) {
+    if (response.statusCode == 200) {
       for (var element in response.data["files"]) {
-        podcastFileList.add(PodcastsFileModel.fromJson(element));
-
-        playlist.add(AudioSource.uri(Uri.parse(PodcastsFileModel.fromJson(element).file!)));
+        var podcastFileModel = PodcastsFileModel.fromJson(element);
+        podcastFileList.add(podcastFileModel);
+        playList.add(AudioSource.uri(Uri.parse(podcastFileModel.file!)));
       }
-      Loading.value=false;
+      loading.value = false;
     }
   }
 
-  Rx<Duration> progressValue = Duration(seconds: 0).obs;
-  Rx<Duration> bufferedValue = Duration(seconds: 0).obs;
+
+  int? duration;
+  RxInt selectedIndex = 0.obs;
+  Rx<Duration> progressState = const Duration(seconds: 0).obs;
+  Rx<Duration> totalDuration = const Duration(seconds: 0).obs;
+  Rx<Duration> bufferState = const Duration(seconds: 0).obs;
   Timer? timer;
-
-  startProgress(){
+  startProgress() {
     const tick = Duration(seconds: 1);
-    int duartion = player.duration!.inSeconds - player.position.inSeconds;
+    switch (player.duration) {
+      case null:
+        duration = 0;
+        break;
+      default:
+        duration = player.duration!.inSeconds;
+        break;
+    }
 
-    if (timer!=null) {
+    if (timer != null) {
       if (timer!.isActive) {
         timer!.cancel();
-        timer=null;
+        timer = null;
       }
     }
     timer = Timer.periodic(tick, (timer) {
-      duartion--;
-      progressValue.value = player.position;
-      bufferedValue.value = player.bufferedPosition;
-
-      if (duartion<=0) {
+      if (player.position.inSeconds == duration) {
         timer.cancel();
-        progressValue.value = Duration(seconds: 0);
-        bufferedValue.value = Duration(seconds: 0);
+      }
+      if (player.playing) {
+        progressState.value = player.position;
+
+        bufferState.value = player.bufferedPosition;
+        print('TIMER :: ${progressState.value}');
       }
     });
-
   }
-
-timerCheck(){
+  timerCheck(){
   if (player.playing) {
     startProgress();
   }
 }
+
+  
+
+  setLoopMode() {
+    if (isLoopAll.value) {
+      isLoopAll.value = false;
+      player.setLoopMode(LoopMode.off);
+    } else {
+      isLoopAll.value = true;
+      player.setLoopMode(LoopMode.all);
+    }
+  }
 }

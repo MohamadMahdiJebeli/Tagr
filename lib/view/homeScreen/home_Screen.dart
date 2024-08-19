@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tagr/component/component.dart';
+import 'package:tagr/component/loadingPage.dart';
 import 'package:tagr/controller/blogs/blogListScreen_Controller.dart';
 import 'package:tagr/controller/homeScreen_Controller.dart';
 import 'package:tagr/controller/blogs/single_Blog_Controller.dart';
@@ -14,6 +15,7 @@ import 'package:tagr/constant/colors.dart';
 import 'package:tagr/constant/string.dart';
 import 'package:tagr/view/blogs/blogsListScreen.dart';
 import 'package:tagr/view/podcasts/podcastListScreen.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
@@ -41,7 +43,6 @@ class HomeScreen extends StatelessWidget {
         GestureDetector(
           onTap: () {
             singleBlogController.getBlogInfo(homeScreen_Controller.posterModel.value.id);   
-
           },
           child: Stack(
           children: [
@@ -121,25 +122,27 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(index==0?spaceWidth:8, 8, 8, 8),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: size.height/5.2,
-                    width: size.width/2.5,
-                      
-                    child: CachedNetworkImage(
-                      imageUrl: homeScreen_Controller.topPodcastList[index].poster!,
-                      imageBuilder: (context, imageProvider) =>
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.all(Radius.circular(14)),
-                          image: DecorationImage(
-                            image: imageProvider,
-                            fit: BoxFit.cover
-                            )
+                  ZoomTapAnimation(
+                    child: SizedBox(
+                      height: size.height/5.2,
+                      width: size.width/2.5,
+                        
+                      child: CachedNetworkImage(
+                        imageUrl: homeScreen_Controller.topPodcastList[index].poster!,
+                        imageBuilder: (context, imageProvider) =>
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(Radius.circular(14)),
+                            image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.cover
+                              )
+                          ),
                         ),
+                        placeholder: (context, url) =>
+                        const loading(),
+                        errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50,),
                       ),
-                      placeholder: (context, url) =>
-                      const loading(),
-                      errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50,),
                     ),
                   ),
                   const SizedBox(height: 6,),
@@ -165,57 +168,60 @@ class HomeScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return  GestureDetector(
               onTap: () {
-                singleBlogController.getBlogInfo(homeScreen_Controller.topVisitedList[index].id);   
+                Future.delayed(const Duration(seconds: 1),).then((value) => Get.replace(singleBlogController.getBlogInfo(homeScreen_Controller.topVisitedList[index].id))
+                );
               },
               child: Padding(
                 padding: EdgeInsets.fromLTRB(index==0?spaceWidth:8, 8, 8, 8),
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: size.height/5.2,
-                      width: size.width/2.5,
-              
-                      child: CachedNetworkImage(
-                        imageUrl: homeScreen_Controller.topVisitedList[index].image!,
-                        imageBuilder: (context, imageProvider) => 
-                        Stack(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.all(Radius.circular(14)),
-                              image: DecorationImage(image: imageProvider,fit: BoxFit.cover),
+                    ZoomTapAnimation(
+                      child: SizedBox(
+                        height: size.height/5.2,
+                        width: size.width/2.5,
+                                    
+                        child: CachedNetworkImage(
+                          imageUrl: homeScreen_Controller.topVisitedList[index].image!,
+                          imageBuilder: (context, imageProvider) => 
+                          Stack(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.all(Radius.circular(14)),
+                                image: DecorationImage(image: imageProvider,fit: BoxFit.cover),
+                              ),
+                              foregroundDecoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(14)),
+                                gradient: LinearGradient(
+                                  begin: AlignmentDirectional.topCenter,
+                                  end: AlignmentDirectional.bottomCenter,
+                                  colors: GradientColor.posterMainHomeColor) 
+                              ),
                             ),
-                            foregroundDecoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(14)),
-                              gradient: LinearGradient(
-                                begin: AlignmentDirectional.topCenter,
-                                end: AlignmentDirectional.bottomCenter,
-                                colors: GradientColor.posterMainHomeColor) 
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 8,
-                            left: 8,
-                            right: 8,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(homeScreen_Controller.topVisitedList[index].author!,style: textTheme.subtitle1,overflow: TextOverflow.ellipsis,),
-                                Row(
-                                  children: [
-                                    const Icon(Icons.remove_red_eye,color: SoidColor.colorSubjectOnPage,size: 17,),
-                                    const SizedBox(width: 2,),
-                                    Text(homeScreen_Controller.topVisitedList[index].view!,style: textTheme.subtitle1,overflow: TextOverflow.ellipsis,),
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
+                            Positioned(
+                              bottom: 8,
+                              left: 8,
+                              right: 8,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(homeScreen_Controller.topVisitedList[index].author!,style: textTheme.subtitle1,overflow: TextOverflow.ellipsis,),
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.remove_red_eye,color: SoidColor.colorSubjectOnPage,size: 20,),
+                                      const SizedBox(width: 2,),
+                                      Text(homeScreen_Controller.topVisitedList[index].view!,style: const TextStyle(color: Colors.grey,fontSize: 10),overflow: TextOverflow.ellipsis,),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                        placeholder: (context, url) => const loading(),
+                        errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50)
+                        )
                       ),
-                      placeholder: (context, url) => const loading(),
-                      errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50)
-                      )
                     ),
                     const SizedBox(height: 6,),
                     SizedBox(

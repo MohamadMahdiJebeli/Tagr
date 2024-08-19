@@ -20,12 +20,14 @@ class RegisterIntro extends StatefulWidget {
 class _RegisterIntroState extends State<RegisterIntro> {
   var registerController = Get.find<RegisterController>();
   final TextEditingController _emailController = TextEditingController();
+  bool emailCheck=false;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _loadEmail();
+    emailCheck;
   }
 
   void _loadEmail() async {
@@ -121,6 +123,12 @@ class _RegisterIntroState extends State<RegisterIntro> {
                                 onChanged: (value) {
                                   // ignore: avoid_print, prefer_interpolation_to_compose_strings
                                   print(value+" is email "+isEmail(value).toString());
+                                  if (isEmail(value)==true) {
+                                    emailCheck=true;
+                                  }else{
+                                    emailCheck=false;
+                                  }
+                                  print(emailCheck);
                                 },
                                 style: textTheme.headline5,
                                 textAlign: TextAlign.center,
@@ -132,11 +140,15 @@ class _RegisterIntroState extends State<RegisterIntro> {
                             ),
                             ElevatedButton(
                             onPressed: () {
-                              emailAc=_emailController.text;
-                              _saveEmail(emailAc);
-                              registerController.register();
-                              Navigator.pop(context);
-                              verifyBttmSheet(context, size, textTheme);
+                              if (emailCheck==true) {
+                                emailAc=_emailController.text;
+                                _saveEmail(emailAc);
+                                registerController.register();
+                                Navigator.pop(context);
+                                verifyBttmSheet(context, size, textTheme);
+                              } else {
+                                Get.snackbar("The Email is incorrecrt", "Please enter the correct email",backgroundGradient: const LinearGradient(colors: GradientColor.errorColors),);
+                              }
                             },
                             style: Theme.of(context).elevatedButtonTheme.style,
                             child: const Text("Next"),

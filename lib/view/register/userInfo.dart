@@ -94,7 +94,6 @@ class _UserInfoState extends State<UserInfo> {
                   onPressed: () {
                     userNameAc = _nameController.text;
 
-                    // ذخیره نام کاربر در حافظه محلی
                     _saveUserName(userNameAc);
 
                     Navigator.of(context).pushReplacement(

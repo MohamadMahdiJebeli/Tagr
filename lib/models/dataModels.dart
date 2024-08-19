@@ -28,24 +28,24 @@ class BlogModelfake {
   });
 }
 
-class PodcastModel {
-  int id;
-  String imageUrl;
-  String title;
-  String speaker;
-  String writerImageUrl;
-  String date;
-  String content;
-  String views;
+// class PodcastModel {
+//   int id;
+//   String imageUrl;
+//   String title;
+//   String speaker;
+//   String writerImageUrl;
+//   String date;
+//   String content;
+//   String views;
 
-  PodcastModel({
-    required this.id,
-    required this.imageUrl,
-    required this.title,
-    required this.speaker,
-    required this.writerImageUrl,
-    required this.date,
-    required this.content,
-    required this.views,
-  });
-}
+//   PodcastModel({
+//     required this.id,
+//     required this.imageUrl,
+//     required this.title,
+//     required this.speaker,
+//     required this.writerImageUrl,
+//     required this.date,
+//     required this.content,
+//     required this.views,
+//   });
+// }

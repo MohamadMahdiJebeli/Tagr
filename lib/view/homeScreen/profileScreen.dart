@@ -11,8 +11,10 @@
   import 'package:tagr/constant/colors.dart';
   import 'package:tagr/constant/string.dart';
   import 'package:tagr/main.dart';
+import 'package:tagr/view/podcasts/managePodcast.dart';
   import 'package:tagr/view/register/registerIntro.dart';
   import 'package:tagr/view/register/userInfo.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 
   class ProfileScreen extends StatefulWidget {
@@ -95,33 +97,41 @@ void _loadEmail() async{
         //Profile Menu
         ProfileDivider(size: widget.size),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Get.toNamed(NamedRoute.routeManageBlog);
+          },
           splashColor: SoidColor.colorSubject,
           child: SizedBox(
             height: widget.size.height / 20,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ImageIcon(Assets.icons.favBlog.provider(),),
-                const SizedBox(width: 5,),
-                Text(string.favoriteBlogs, style: widget.textTheme.headline5,)
-              ],
+            child: ZoomTapAnimation(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ImageIcon(Assets.icons.favBlog.provider(),),
+                  const SizedBox(width: 5,),
+                  Text(string.favoriteBlogs, style: widget.textTheme.headline5,)
+                ],
+              ),
             ),
           ),
         ),
         ProfileDivider(size: widget.size),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Get.to(ManagePodcast());
+          },
           splashColor: SoidColor.colorSubject,
           child: SizedBox(
             height: widget.size.height / 20,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ImageIcon(Assets.icons.favPodcast.provider(),),
-                const SizedBox(width: 5,),
-                Text(string.favoritePodcast, style: widget.textTheme.headline5,)
-              ],
+            child: ZoomTapAnimation(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ImageIcon(Assets.icons.favPodcast.provider(),),
+                  const SizedBox(width: 5,),
+                  Text(string.favoritePodcast, style: widget.textTheme.headline5,)
+                ],
+              ),
             ),
           ),
         ),
@@ -129,7 +139,7 @@ void _loadEmail() async{
         InkWell(
           onTap: () {
             GetStorage().read(StorageKey.token) == null;
-            Get.offAll(RegisterIntro());
+            Get.offAll(const RegisterIntro());
           },
           splashColor: SoidColor.colorSubject,
           child: SizedBox(

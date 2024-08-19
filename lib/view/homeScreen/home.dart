@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tagr/component/searchbar.dart';
 import 'package:tagr/constant/colors.dart';
 import 'package:tagr/constant/string.dart';
 import 'package:tagr/constant/stroge_constant.dart';
@@ -12,6 +15,9 @@ import 'package:tagr/view/homeScreen/home_Screen.dart';
 import 'package:tagr/view/homeScreen/profileScreen.dart';
 import 'package:tagr/view/register/registerIntro.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+
+
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
@@ -70,6 +76,8 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.all(20.0),
               child: InkWell(
                 onTap: () {
+                  _key.currentState!.closeDrawer();
+                  selectedIndex.value = 1;
                 },
                 //Profile Humberger Menu
                 child: Column(
@@ -122,6 +130,16 @@ class _HomeState extends State<Home> {
             ListTile(
               title: Row(
                 children: [
+                  
+                ],
+              ),
+            ),
+            const Divider(
+              color: SoidColor.colorDivider,
+            ),
+            ListTile(
+              title: Row(
+                children: [
                   ImageIcon(Assets.icons.about.provider()),
                   const SizedBox(width: 7,),
                   const Text("About"),
@@ -147,7 +165,19 @@ class _HomeState extends State<Home> {
           },
           ),
         Image(image: Assets.images.tagrLogoNoBG.provider(),color: Colors.black,height: size.height/13.6,),
-        const Icon(Icons.search),
+        GestureDetector(
+          onTap: () {
+            showSearch(
+              context: context,
+              delegate: CustomSearchDelegate(),
+              );
+          },
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: ZoomTapAnimation(
+              child: Icon(Icons.search)),
+          ),
+        ),
         ],
         ),
       ),
@@ -220,11 +250,15 @@ class BttmNavigation extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              IconButton(onPressed: () => changePage(0), icon: ImageIcon(Assets.icons.home.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,),
+              ZoomTapAnimation(
+                child: IconButton(onPressed: () => changePage(0), icon: ImageIcon(Assets.icons.home.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,)
+                ),
               IconButton(onPressed: (){Get.find<RegisterController>().checkLogin();}, icon: ImageIcon(Assets.icons.add.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,),
-              IconButton(onPressed: () {
-                changePage(1);
-              }, icon: ImageIcon(Assets.icons.user.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,)
+              ZoomTapAnimation(
+                child: IconButton(onPressed: () {
+                  changePage(1);
+                }, icon: ImageIcon(Assets.icons.user.provider(),size: 30,),color: SoidColor.colorSubjectOnPage,),
+              )
             ],
           ),
         ),

@@ -6,6 +6,8 @@ import 'package:tagr/component/component.dart';
 import 'package:tagr/controller/blogs/blogListScreen_Controller.dart';
 import 'package:tagr/controller/blogs/single_Blog_Controller.dart';
 import 'package:tagr/controller/homeScreen_Controller.dart';
+import 'package:tagr/main.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 // ignore: must_be_immutable
 class PodcastsListScreen extends StatelessWidget {
@@ -37,44 +39,46 @@ class PodcastsListScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: ( (){
-                    //singleBlogController.getBlogInfo(podcastlistController.podcastList[index].id);
+                    Get.toNamed(NamedRoute.routeSinglePodcast,arguments: homeScreen_Controller.topPodcastList[index]);
                     }),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          height: size.height/8,
-                          width: size.width/3.5,
-                          child: CachedNetworkImage(
-                            imageUrl: homeScreen_Controller.topPodcastList[index].poster!, 
-                            imageBuilder: (context, imageProvider) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.all(Radius.circular(16)),
-                                  image: DecorationImage(image: imageProvider,fit: BoxFit.cover),
-                                ),
-                              );
-                            },
-                            placeholder: (context, url) => const loading(),
-                          
-                            errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50,),
-                            ),
-                        ),
-                    
-                          SizedBox(width: size.width/25,),
-                    
+                    child: ZoomTapAnimation(
+                      child: Row(
+                        children: [
                           SizedBox(
-                            width: size.width/1.7,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                // ignore: deprecated_member_use
-                                Text(homeScreen_Controller.topPodcastList[index].title!,style: textTheme.headline3,overflow: TextOverflow.ellipsis,maxLines: 2,),
-                              ],
-                            ),
-                          )
-                      ],
+                            height: size.height/8,
+                            width: size.width/3.5,
+                            child: CachedNetworkImage(
+                              imageUrl: homeScreen_Controller.topPodcastList[index].poster!, 
+                              imageBuilder: (context, imageProvider) {
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(Radius.circular(16)),
+                                    image: DecorationImage(image: imageProvider,fit: BoxFit.cover),
+                                  ),
+                                );
+                              },
+                              placeholder: (context, url) => const loading(),
+                            
+                              errorWidget: (context, url, error) => const Icon(Icons.broken_image_outlined,color: Colors.grey,size: 50,),
+                              ),
+                          ),
+                      
+                            SizedBox(width: size.width/25,),
+                      
+                            SizedBox(
+                              width: size.width/1.7,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  // ignore: deprecated_member_use
+                                  Text(homeScreen_Controller.topPodcastList[index].title!,style: textTheme.headline3,overflow: TextOverflow.ellipsis,maxLines: 2,),
+                                ],
+                              ),
+                            )
+                        ],
+                      ),
                     ),
                   ),
                 );

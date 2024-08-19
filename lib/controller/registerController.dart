@@ -12,9 +12,12 @@ import 'package:tagr/gen/assets.gen.dart';
 import 'package:tagr/main.dart';
 import 'package:tagr/services/dioService.dart';
 import 'package:tagr/view/homeScreen/home.dart';
+import 'package:tagr/view/podcasts/managePodcast.dart';
+import 'package:tagr/view/podcasts/singleMangePodcast.dart';
 import 'package:tagr/view/register/registerIntro.dart';
 import 'package:tagr/view/register/userInfo.dart';
 import 'package:tagr/view/splashScreen.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class RegisterController extends GetxController {
   TextEditingController emailTextEditingController = TextEditingController();
@@ -102,26 +105,31 @@ class RegisterController extends GetxController {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed(NamedRoute.routeManageBlog);
+                    Get.toNamed(NamedRoute.routeSingleManageBlogScreen);
                   },
-                  child: Column(
-                    children: [
-                      Image.asset(Assets.icons.blogs.path,scale: 12,),
-                      const SizedBox(height: 15,),
-                      const Text("Blogs",style: TextStyle(color: Colors.black),)
-                    ],
+                  child: ZoomTapAnimation(
+                    child: Column(
+                      children: [
+                        Image.asset(Assets.icons.blogs.path,scale: 12,),
+                        const SizedBox(height: 15,),
+                        const Text("Blogs",style: TextStyle(color: Colors.black),)
+                      ],
+                    ),
                   ),
                 ),
                 GestureDetector(
                   onTap: () {
-                    
+                    Get.back();
+                    Get.snackbar("Sorry!", "You are currently unable to share the podcast");
                   },
-                  child: Column(
-                    children: [
-                      Image.asset(Assets.icons.podcast.path,scale: 12,),
-                      const SizedBox(height: 15,),
-                      const Text("Podcasts",style: TextStyle(color: Colors.black),)
-                    ],
+                  child: ZoomTapAnimation(
+                    child: Column(
+                      children: [
+                        Image.asset(Assets.icons.podcast.path,scale: 12,),
+                        const SizedBox(height: 15,),
+                        const Text("Podcasts",style: TextStyle(color: Colors.black),)
+                      ],
+                    ),
                   ),
                 )
               ],

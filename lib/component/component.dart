@@ -3,6 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:tagr/controller/homeScreen_Controller.dart';
 import 'package:tagr/gen/assets.gen.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../constant/colors.dart';
 
 class ProfileDivider extends StatelessWidget {
@@ -87,7 +88,8 @@ AppBar appbar(Size size, TextTheme textTheme, String title) {
         padding: const EdgeInsets.all(17.0),
         child: GestureDetector(
           onTap: Get.back,
-          child: ImageIcon(Assets.icons.back.provider(),size: 20,)),
+          child: ZoomTapAnimation(
+            child: ImageIcon(Assets.icons.back.provider(),size: 20,))),
       ),
     );
   }

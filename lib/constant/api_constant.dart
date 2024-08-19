@@ -8,6 +8,7 @@ class APIconstant{
   static const blogPost = baseURL+"article/post.php";
   static const getPodcastList = baseURL+"podcast/get.php?command=new&user_id=";
   static const getPodcastFile = baseURL+"podcast/get.php?command=get_files&podcats_id=";
+  static const postPodcast = baseURL + "podcast/post.php";
 }
 
 class APIBlogKeyConstant{
@@ -18,4 +19,11 @@ class APIBlogKeyConstant{
   static const image = 'image';
   static const command = 'command';
   static const tagList = 'tag_list';
+}
+
+class ApiPodcastTitleKyConstants{
+  static const userId ="user_id";
+  static const title ="title";
+  static const catId ="cat_id";
+  static const command ="command";
 }

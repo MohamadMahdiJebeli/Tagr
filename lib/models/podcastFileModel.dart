@@ -7,7 +7,7 @@ class PodcastsFileModel {
   String? title;
   String? lenght;
 
-  PodcastsFileModel();
+  PodcastsFileModel(this.title);
 
   PodcastsFileModel.fromJson(Map<String, dynamic> element) {
     id = element["id"];
