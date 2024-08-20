@@ -1,6 +1,6 @@
 # tagr
 
-A new Flutter project.
+a platform for sharing knowledge and experiences
 
 ## Getting Started
 
