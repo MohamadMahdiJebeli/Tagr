@@ -5,3 +5,5 @@ Tagr is an innovative platform that allows users to share their podcasts and blo
 - User Profiles: Create your profile to showcase your content.
 - Content Sharing: Share your podcasts and blogs with the community.
 - Responsive Design: Enjoy a seamless experience across devices.
+  
+![Tagr 1](https://github.com/user-attachments/assets/746ffa29-aeca-4a48-9c15-df29ff49352c)
