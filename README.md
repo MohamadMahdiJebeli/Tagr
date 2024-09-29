@@ -9,6 +9,7 @@ Tagr is an innovative platform that allows users to share their podcasts and blo
 
 ## Images:
 
+
 <img src="https://github.com/user-attachments/assets/746ffa29-aeca-4a48-9c15-df29ff49352c" alt="Tagr 1" width="200" />  
 <img src="https://github.com/user-attachments/assets/60892db5-35fb-4f6a-8d6e-a5323af177ba" alt="Tagr 2" width="200" />  
 <img src="https://github.com/user-attachments/assets/10bad281-0a13-4a32-b390-6b271524f351" alt="Tagr 3" width="200" />
