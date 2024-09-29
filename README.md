@@ -6,6 +6,8 @@ Tagr is an innovative platform that allows users to share their podcasts and blo
 - Content Sharing: Share your podcasts and blogs with the community.
 - Responsive Design: Enjoy a seamless experience across devices.
 
+## APK File:
+https://www.4shared.com/mobile/3eVudp3Cge/app-release.html
 
 ## Images:
 
